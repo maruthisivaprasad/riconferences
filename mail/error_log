@@ -1,0 +1,18 @@
+[02-Oct-2018 19:49:55 Etc/GMT] PHP Notice:  Undefined variable: email in /home/thecliof/public_html/mail/index.php on line 22
+[02-Oct-2018 19:49:55 Etc/GMT] PHP Fatal error:  Call to a member function AddAttachment() on a non-object in /home/thecliof/public_html/mail/index.php on line 22
+[02-Oct-2018 19:50:00 Etc/GMT] PHP Notice:  Undefined variable: email in /home/thecliof/public_html/mail/index.php on line 22
+[02-Oct-2018 19:50:00 Etc/GMT] PHP Fatal error:  Call to a member function AddAttachment() on a non-object in /home/thecliof/public_html/mail/index.php on line 22
+[02-Oct-2018 19:50:24 Etc/GMT] PHP Notice:  Undefined variable: email in /home/thecliof/public_html/mail/index.php on line 22
+[02-Oct-2018 19:50:24 Etc/GMT] PHP Fatal error:  Call to a member function AddAttachment() on a non-object in /home/thecliof/public_html/mail/index.php on line 22
+[02-Oct-2018 19:51:03 Etc/GMT] PHP Notice:  Undefined variable: email in /home/thecliof/public_html/mail/index.php on line 22
+[02-Oct-2018 19:51:03 Etc/GMT] PHP Fatal error:  Call to a member function AddAttachment() on a non-object in /home/thecliof/public_html/mail/index.php on line 22
+[02-Oct-2018 19:52:22 Etc/GMT] PHP Notice:  Undefined variable: email in /home/thecliof/public_html/mail/index.php on line 22
+[02-Oct-2018 19:52:22 Etc/GMT] PHP Fatal error:  Call to a member function AddAttachment() on a non-object in /home/thecliof/public_html/mail/index.php on line 22
+[02-Oct-2018 19:52:36 Etc/GMT] PHP Notice:  Undefined variable: email in /home/thecliof/public_html/mail/index.php on line 22
+[02-Oct-2018 19:52:36 Etc/GMT] PHP Fatal error:  Call to a member function AddAttachment() on a non-object in /home/thecliof/public_html/mail/index.php on line 22
+[02-Oct-2018 19:53:09 Etc/GMT] PHP Fatal error:  Class 'PHPMailer\PHPMailer\Exception' not found in /home/thecliof/public_html/mail/src/PHPMailer.php on line 2794
+[02-Oct-2018 19:53:55 Etc/GMT] PHP Fatal error:  Class 'PHPMailer\PHPMailer\Exception' not found in /home/thecliof/public_html/mail/src/PHPMailer.php on line 2794
+[02-Oct-2018 19:54:30 Etc/GMT] PHP Fatal error:  Class 'PHPMailer\PHPMailer\Exception' not found in /home/thecliof/public_html/mail/src/PHPMailer.php on line 2794
+[02-Oct-2018 19:54:50 Etc/GMT] PHP Fatal error:  Class 'PHPMailer\PHPMailer\Exception' not found in /home/thecliof/public_html/mail/src/PHPMailer.php on line 1943
+[02-Oct-2018 20:03:16 Etc/GMT] PHP Fatal error:  Class 'PHPMailer\PHPMailer\Exception' not found in /home/thecliof/public_html/mail/src/PHPMailer.php on line 2794
+[02-Oct-2018 20:03:19 Etc/GMT] PHP Fatal error:  Class 'PHPMailer\PHPMailer\Exception' not found in /home/thecliof/public_html/mail/src/PHPMailer.php on line 2794

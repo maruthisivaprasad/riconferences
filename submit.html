@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <!-- For IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- For Resposive Device -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>RI Conferences</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="56x56" href="images/fav-icon/icon.png">
+
+
+    <!-- Main style sheet -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+    <!-- responsive style sheet -->
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+    <script>
+        // Render the PayPal button
+
+        paypal.Button.render({
+
+            // Set your environment
+
+            env: 'sandbox', // sandbox | production
+
+            // Specify the style of the button
+
+            style: {
+                label: 'pay',
+                size: 'small', // small | medium | large | responsive
+                shape: 'rect', // pill | rect
+                color: 'gold' // gold | blue | silver | black
+            },
+
+            // PayPal Client IDs - replace with your own
+            // Create a PayPal app: https://developer.paypal.com/developer/applications/create
+
+            client: {
+                sandbox: 'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
+                production: '<insert production client id>'
+            },
+
+            // Show the buyer a 'Pay Now' button in the checkout flow
+            commit: true,
+
+            // Wait for the PayPal button to be clicked
+
+            payment: function(data, actions) {
+                return actions.payment.create({
+                    payment: {
+                        transactions: [{
+                            amount: {
+                                total: '0.01',
+                                currency: 'USD'
+                            }
+                        }]
+                    }
+                });
+            },
+
+            // Wait for the payment to be authorized by the customer
+
+            onAuthorize: function(data, actions) {
+                return actions.payment.execute().then(function() {
+                    window.alert('Payment Complete!');
+                    window.location = "/thank-you.html"
+                });
+            }
+
+        }, '#paypal-button-container');
+    </script>
+    <!-- Fix Internet Explorer ______________________________________-->
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="vendor/html5shiv.js"></script>
+      <script src="vendor/respond.js"></script>
+    <![endif]-->
+
+
+  </head>
+
+  <body>
+    <div class="main-page-wrapper">
+
+      <!-- ===================================================
+        Loading Transition
+      ==================================================== -->
+      <div id="loader-wrapper">
+        <div id="loader"></div>
+      </div>
+
+
+
+      <!--
+      =============================================
+        Theme Header
+      ==============================================
+      -->
+      <header class="theme-main-header">
+        <div class="top-header">
+          <div class="container">
+            <div class="clearfix">
+              <div class="float-left">
+                <!-- <ul class="left-widget">
+                  <li>
+                    <ul class="social-icon clearfix">
+                      <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                      <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                      <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                      <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <div id="polyglotLanguageSwitcher">
+                      <form action="#">
+                        <select id="polyglot-language-options">
+                          <option id="en" value="en" selected>En</option>
+                          <option id="fr" value="fr">Fr</option>
+                          <option id="de" value="de">Gr</option>
+                          <option id="it" value="it">It</option>
+                          <option id="es" value="es">Sp</option>
+                        </select>
+                      </form>
+                    </div>
+                  </li>
+                </ul> -->
+              </div>
+              <div class="float-left">
+                <ul class="left-widget clearfix">
+                  <li><a href="#" class="pl-0"><i class="fa fa-envelope" aria-hidden="true"></i> admin@riconferences.com</a></li>
+                  <li><a href="#"><i class="fa fa-phone" aria-hidden="true"></i> +1 855-966-9087</a></li>
+                </ul>
+              </div>
+          <!--     <div class="float-right">
+                <ul class="right-widget clearfix">
+                  <li class="quote float-right"><a href="conferences.html">Register for an Event</a></li>
+                </ul>
+              </div> -->
+            </div> <!-- /.clearfix -->
+          </div> <!-- /.container -->
+        </div> <!-- /.top-header -->
+
+
+
+        <div class="main-menu-wrapper clearfix">
+          <div class="container clearfix">
+            <!-- Logo -->
+            <div class="logo float-left"><a href="index.html"><img src="images/logo/logo.png" alt="Logo"></a></div>
+
+            <!-- ============================ Theme Menu ========================= -->
+            <nav class="navbar-expand-lg float-right navbar-light border-bottom" id="mega-menu-wrapper">
+                <button class="navbar-toggler float-right clearfix" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <i class="flaticon-menu-options"></i>
+                </button>
+                <div class="collapse navbar-collapse clearfix" id="navbarNav">
+                  <ul class="navbar-nav nav">
+                    <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item dropdown-holder">
+                      <a class="nav-link" href="conferences.html">Conferences</a>
+                      <ul class="sub-menu">
+                        <li><a href="dental-conference.html">Dental Conference</a></li>
+                        <li><a href="climate-change.html">Climate change</a></li>
+                        <li><a href="food-safety.html">Food safety</a></li>
+                        <li><a href="health-care.html">Health care</a></li>
+                        <li><a href="materials-technology.html">Materials technology</a></li>
+                        <li><a href="petroleum-refinery.html">Petroleum refinery</a></li>
+                        <li><a href="world-heart-congress.html">World heart congress</a></li>
+                    <li><a href="nursing-conference.html">Nursing Conference</a></li>
+                  </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a>
+                    </li>
+                    <li class="nav-item dot-fix mr-0">
+                      <a class="nav-link" href="contact-us.html">Contact us</a>
+                    </li>
+                  </ul>
+                </div>
+            </nav>
+          </div> <!-- /.container -->
+        </div> <!-- /.main-menu-wrapper -->
+      </header> <!-- /.theme-main-header -->
+         
+         <div class="jumbotron jumbotron-fluid bg-dark conference-banner">
+            <div class="overlay">
+               <div class="container clearfix text-center">
+                  <h5 class="text-white">Submit Abstract</h5>
+                  <h2>1st World Nursing and Healthcare Conference</h2>
+                  <h5 class="text-white">August 27-28, 2018 Dubai, UAE</h5>
+                  <h6 class="mt-3 text-white">Theme: Explore the possibilities towards better Healthcare</h6>
+               </div>
+               <!-- /.container -->
+            </div>
+            <!-- /.overlay -->
+         </div>
+         <!-- /.inner-banner -->
+         <!--
+            =============================================
+            	Conference Details
+            ==============================================
+            -->
+         <div class="our-blog blog-details mt-100">
+            <div class="container">
+               <div class="row">
+                  <div class="col-xl-9 col-lg-8 col-12">
+                    <form>
+                       <div class="form-group">
+                          <label for="exampleInputEmail1">Email address</label>
+                          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                       </div>
+                       <div class="form-group">
+                          <label for="exampleFormControlSelect1">Select the conference</label>
+                          <select class="form-control" id="exampleFormControlSelect1">
+                             <option>Dental Conference</option>
+                             <option>Nursing Conference</option>
+                          </select>
+                       </div>
+                       <div class="form-group">
+                          <label for="exampleFormControlFile1">Example file input</label>
+                          <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                       </div>
+                       <div class="form-group">
+                          <label for="inputAddress">Address</label>
+                          <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                       </div>
+                       <div class="form-group">
+                          <label for="inputAddress2">Address 2</label>
+                          <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                       </div>
+                       <div class="form-group">
+                             <label for="inputCity">City</label>
+                             <input type="text" class="form-control" id="inputCity">
+                          </div>
+                          <div class="form-group">
+                             <label for="inputState">State</label>
+                             <select id="inputState" class="form-control">
+                                <option selected>Choose...</option>
+                                <option>Hyderabad</option>
+                                <option>MUmbai</option>
+                             </select>
+                          </div>
+                          <div class="form-group">
+                             <label for="inputZip">Zip</label>
+                             <input type="text" class="form-control" id="inputZip">
+                          </div>
+                          <div class="form-check text-center">
+                             <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                             <label class="form-check-label" for="exampleCheck1">Agree to terms and conditions</label>
+                          </div>
+                          <div class="form-submit text-center">
+                           <button type="submit" class="btn btn-primary w-50 text-center">Submit</button>
+                          </div>
+
+                    </form>
+                  </div>
+                  <!-- Sidebar STarting -->
+                  <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8 col-12 blog-sidebar">
+                     <!-- <div class="sidebar-box sidebar-search">
+                        <form action="#">
+                        	<input type="text" placeholder="Search..">
+                        	<button><i class="fa fa-search" aria-hidden="true"></i></button>
+                        </form>
+                        </div> --> <!-- /.sidebar-search -->
+                     <div class="sidebar-box blog-categories bg-customjs-sticky-block g-sticky-block--lg" id="stickyblock-start" data-start-point="#stickyblock-start" data-end-point="#stickyblock-end">
+                      
+                     </div>
+                     <!-- /.blog-categories -->
+
+                     <!-- /.sidebar-recent-post -->
+                     <!-- <div class="sidebar-keyword">
+                        <h3>Keyword</h3>
+                        <ul class="clearfix">
+                        	<li><a href="#">Ideas </a></li>
+                        	<li><a href="#">Education </a></li>
+                        	<li><a href="#">design </a></li>
+                        	<li><a href="#">animation </a></li>
+                        	<li><a href="#">book </a></li>
+                        </ul>
+                        </div>  --><!-- /.sidebar-keyword -->
+                  </div>
+                  <!-- /.blog-sidebar -->
+               </div>
+               <!-- /.row -->
+            </div>
+            <!-- /.container -->
+         </div>
+         <!-- /.our-blog -->
+         <div id="stickyblock-end"></div>
+         <!--
+            =====================================================
+            	Footer
+            =====================================================
+            -->
+         <footer class="theme-footer">
+            <div class="container">
+               <div class="content-wrapper">
+                  <div class="footer-bottom-wrapper row">
+                     <div class="col-lg-4 col-sm-6 col-12 footer-logo">
+                        <div class="logo"><a href="index.html"><img src="images/logo/logo.png" alt="Logo"></a></div>
+                        <a href="#" class="mail-address">riconferences@gmail.com</a>
+                        <a href="#" class="phone-number">888 888 8888</a>
+                     </div>
+                     <div class="col-lg-4 col-sm-6 col-12 footer-list">
+                        <h4>Conferences</h4>
+                        <ul>
+                           <li><a href="#nursing-conference.html">Nursing Conference</a></li>
+                           <li><a href="#dental-conference.html">Dental Conference</a></li>
+                           <!-- <li><a href="#">Security</a></li>
+                              <li><a href="#">Report Bug</a></li>
+                              <li><a href="#">Pricing</a></li> -->
+                        </ul>
+                     </div>
+                     <!-- /.footer-list -->
+                     <div class="col-lg-4 col-sm-6 col-12 footer-list">
+                        <h4>About Us</h4>
+                        <ul>
+                           <li><a href="#about-us.html">About us</a></li>
+                           <li><a href="#contact-us.html">Contact us</a></li>
+                           <!-- <li><a href="#">Jobs</a></li>
+                              <li><a href="team.html">Team</a></li>
+                              <li><a href="testimonial.html">Testimonials</a></li>
+                              <li><a href="blog-grid.html">Blog</a></li> -->
+                        </ul>
+                     </div>
+                     <!-- /.footer-list -->
+                     <!-- <div class="col-lg-4 col-sm-6 col-12 footer-list">
+                        <h4>Become A Member</h4>
+                        <ul>
+                        	<li><a href="#">Contributor</a></li>
+                        	<li><a href="#">Union Member</a></li>
+                        	<li><a href="#">Processing</a></li>
+                        	<li><a href="#">Legal Action</a></li>
+                        </ul>
+                        </div> <!-- /.footer-list -->
+                  </div>
+                  <!-- /.footer-bottom-wrapper -->
+                  <div class="copyright-wrapper row">
+                     <div class="col-md-6 col-sm-8 col-12">
+                        <p>© 2018 <a href="#">RI Conferences</a> All rights reserved</p>
+                     </div>
+                     <div class="col-md-6 col-sm-4 col-12">
+                        <ul>
+                           <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                           <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                           <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                        </ul>
+                     </div>
+                  </div>
+                  <!-- /.copyright-wrapper -->
+               </div>
+            </div>
+            <!-- /.container -->
+         </footer>
+         <!-- /.theme-footer -->
+         <!-- Scroll Top Button -->
+         <button class="scroll-top tran3s">
+         <i class="fa fa-angle-up" aria-hidden="true"></i>
+         </button>
+         <!-- Optional JavaScript _____________________________  -->
+         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+         <!-- jQuery -->
+         <script src="vendor/jquery.2.2.3.min.js"></script>
+         <script src="js/jquery.min.js"></script>
+         <!-- Popper js -->
+         <script src="vendor/popper.js/popper.min.js"></script>
+         <!-- Bootstrap JS -->
+         <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+         <!-- Camera Slider -->
+         <script src='vendor/Camera-master/scripts/jquery.mobile.customized.min.js'></script>
+         <script src='vendor/Camera-master/scripts/jquery.easing.1.3.js'></script>
+         <script src='vendor/Camera-master/scripts/camera.min.js'></script>
+         <!-- Language Stitcher -->
+         <script src="vendor/language-switcher/jquery.polyglot.language.switcher.js"></script>
+         <!-- Mega menu  -->
+         <script src="vendor/bootstrap-mega-menu/js/menu.js"></script>
+         <!-- WOW js -->
+         <script src="vendor/WOW-master/dist/wow.min.js"></script>
+         <!-- owl.carousel -->
+         <script src="vendor/owl-carousel/owl.carousel.min.js"></script>
+         <!-- js count to -->
+         <script src="vendor/jquery.appear.js"></script>
+         <script src="vendor/jquery.countTo.js"></script>
+         <!-- Fancybox -->
+         <script src="vendor/fancybox/dist/jquery.fancybox.min.js"></script>
+         <script src="js/hs.core.js"></script>
+         <script src="js/hs.sticky-block.js"></script>
+         <!-- Theme js -->
+         <script src="js/theme.js"></script>
+         <script type="text/javascript">
+            $(window).on('load', function () {
+                   // initialization of sticky blocks
+                   $.HSCore.components.HSStickyBlock.init('.js-sticky-block');
+                 });
+         </script>
+      </div>
+      <!-- /.main-page-wrapper -->
+   </body>
+</html>

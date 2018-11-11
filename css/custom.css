@@ -1,0 +1,215 @@
+.overlay{
+    background-color: rgba(0,0,0,0.1);
+    position: relative;
+    padding: 10px 50px;
+    margin: 0px 15%;
+}
+.about{
+    color:#333;
+    padding:50px;
+}
+
+.g-color-white{
+    color:white;
+}
+
+.theme-footer{
+    background:#ccc;
+    color:black !important;
+}
+
+.phone-number,.footer-list{
+    color:black !Important;
+}
+.footer-list-about ul li a{
+    color:black !important;
+}
+.footer-list ul li a{
+    color:#28a745 !important;
+    text-decoration: underline;
+}
+.pl-0{
+	padding-left: 0px !important;
+}
+.heading-main{
+	font-size: 60px;
+	line-height: 1.3;
+}
+
+.border-bottom{
+	border-bottom: 1px solid #e3e3e3;
+}
+.border-top{
+	border-top: 1px solid #e3e3e3;
+}
+
+.mt-100{
+	margin-top: 100px !important;
+}
+
+.mb-100{
+	margin-bottom: 100px;
+}
+
+.pt-100{
+	padding-top: 100px !important;
+}
+.pt-50{
+	padding-top: 50px !important;
+}
+
+.pb-50{
+	padding-bottom: 50px;
+}
+.pb-20{
+	padding-bottom: 20px;
+}
+.pb-30{
+	padding-bottom: 30px;
+}
+.mb-50{
+	margin-bottom: 50px;
+}
+
+.bg-custom{
+	background-color: #f5f6f7;
+}
+
+.conference-banner {
+    background: url(../images/home/inner-banner.jpg) no-repeat center;
+     padding: 60px 0 60px 0;
+    /*background-color: #000;
+    background-size: cover;
+    margin-bottom: 130px;*/
+}
+.conference-banner-climate {
+    background: url(../images/banners/climate.jpg) no-repeat center;
+    position:relative;
+    padding: 60px 0 60px 0;
+    /*background-color: #000;
+    background-size: cover;
+    margin-bottom: 130px;*/
+}
+.conference-banner-dental {
+    background: url(../images/banners/dentalcare.jpg) no-repeat center;
+    position:relative;
+    padding: 60px 0 60px 0;
+    /*background-color: #000;
+    background-size: cover;
+    margin-bottom: 130px;*/
+}
+.conference-banner-food {
+    background: url(../images/banners/foodscience.jpg) no-repeat center;
+    position:relative;
+    padding: 60px 0 60px 0;
+    /*background-color: #000;
+    background-size: cover;
+    margin-bottom: 130px;*/
+}
+.home-banner {
+    background: url(../images/home/inner-banner-home.jpg) no-repeat center;
+     padding: 60px 0 60px 0;
+    /*background-color: #000;
+    background-size: cover;
+    margin-bottom: 130px;*/
+}
+.conference-banner .overlay h2,.conference-banner-climate .overlay h2, .conference-banner-dental .overlay h2,  .conference-banner-food .overlay h2  {
+    letter-spacing: -2px;
+    font-size: 50px;
+    text-transform: capitalize;
+    color: #fff;
+    margin-bottom: 10px;
+}
+.conference-banner .overlay ul,.conference-banner-climate .overlay ul, .conference-banner-dental .overlay ul, .conference-banner-food .overlay ul {
+    position: relative;
+    /*padding-left: 70px;*/
+    text-align: center;
+}
+
+.conference-banner .overlay ul li,.conference-banner-climate .overlay ul li, .conference-banner-dental .overlay ul li, .conference-banner-food .overlay ul li {
+    display: inline-block;
+    color: #fff;
+    /*margin: 0 2px;*/
+    font-size: 16px;
+    text-transform: capitalize;
+}
+
+.conference-banner .action-items,.conference-banner-climate .action-items, .conference-banner-dental .action-items, .conference-banner-food .action-items{
+	margin-top: 20px;
+}
+
+.blog-sidebar .sidebar-box{
+	border: 1px solid #e3e3e3;
+    padding: 25px 10px 25px 20px;
+    
+}
+
+.session ul li{
+	position: relative;
+    padding: 0 0 55px 40px;
+}
+
+.list-box-text ul li{
+	margin-top: 30px;
+}
+
+.list-box-text ul li p{
+	margin-top: 15px;
+}
+.font-weight-100{
+	font-weight: 100;
+}
+.font-weight-200{
+	font-weight: 200;
+}
+.font-weight-300{
+	font-weight: 300;
+}
+.font-weight-400{
+	font-weight: 400;
+}
+.font-weight-500{
+	font-weight: 500;
+}
+.font-weight-600{
+	font-weight: 600;
+}
+
+.color-primary{
+	color: #247b62;
+}
+.mt-50{
+	margin-top: 50px;
+}
+
+.theme-main-header .top-header .right-widget ul{
+	margin-bottom: 0px !important;
+}
+.theme-main-header .top-header .left-widget ul{
+	margin-bottom: 0px !important;
+}
+.font-size-30{
+	font-size: 30px !important; 
+}
+.font-size-18{
+	font-size: 18px !important; 
+}
+.g-mx-5{
+	margin-left: 5px;
+	margin-right: 5px;
+}
+.g-mx-10{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.text{
+	color: #383838;
+}
+.text-primary{
+	color: #247b62 !important;
+}
+.home-title h2 {
+    font-size: 58px;
+    letter-spacing: -4px;
+    margin-bottom: 10px;
+}
