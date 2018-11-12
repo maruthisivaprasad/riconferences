@@ -1,5 +1,11 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../ckeditor/ckeditor.js" type="text/javascript"></script>
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
+    <script type="text/javascript" src="https://editor.datatables.net/extensions/Editor/css/editor.dataTables.min.css"></script>
+    
     <style>
     body {
         font-family: "Lato", sans-serif;
