@@ -1,10 +1,10 @@
 <?php
 require_once('../config.php');
-
 if (isset($_POST['password']) && isset($_POST['username'])) {
     $sql = "select * from user where username='".$_POST['username']."' and password='".$_POST['password']."'";
     $login_check = mysqli_query($conn, $sql);
     if (!empty($login_check)) {
+        $_SESSION['errormessage'] = '';
         header('Location: events.php');
     } else {
         $_SESSION['errormessage'] = 'Username and password not matching';
@@ -35,7 +35,7 @@ if (isset($_POST['password']) && isset($_POST['username'])) {
     <div class="container">
         <form class="form-signin" method="POST">
             <div class="row" style="padding-top:200px;padding-left: 550px;">
-                <p style="color: red"><?php echo $_SESSION['errormessage'];?></p>
+                <p style="color: red"><?php echo isset($_SESSION['errormessage']) ? $_SESSION['errormessage'] : '';?></p>
                 <div class="logo float-left"><a href="index"><img src="../images/logo/logo.png" alt="Logo"></a></div>
                 <br>
                 <div class="col-md-12">
