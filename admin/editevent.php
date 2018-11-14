@@ -1,7 +1,7 @@
 <?php 
 require_once('../config.php');
-$path = 'C:/xampp/htdocs/riconferances';
 $sql = "select * from events where eventid=".$_GET['id'];
+$eventid = $_GET['id'];
 $res = mysqli_query($conn,$sql);
 $result = mysqli_fetch_object($res);
 $enddate = '';
@@ -17,7 +17,7 @@ if(isset($_POST) && !empty($_POST))
     $sliderfile = $brochurefile = $backgroundfile = '';
     if(isset($_FILES["brochure"]["name"]) && !empty($_FILES["brochure"]["name"]))
     {
-        unlink($path.'/documents/'.$eventid.'/brochure/'.$result->brochure);
+        unlink($path.'/documents/'.$eventid.'/'.$result->brochure);
         if (!file_exists($path.'/documents/'.$eventid))
             mkdir($path.'/documents/'.$eventid, 0777, true);
         if (!file_exists($path.'/documents/'.$eventid.'/brochure'))
@@ -33,7 +33,7 @@ if(isset($_POST) && !empty($_POST))
 
     if(isset($_FILES["background_image"]["name"]) && !empty($_FILES["background_image"]["name"]))
     {
-        unlink($path.'/documents/'.$eventid.'/background/'.$result->background_image);
+        unlink($path.'/documents/'.$eventid.'/'.$result->background_image);
         if (!file_exists($path.'/documents/'.$eventid))
             mkdir($path.'/documents/'.$eventid, 0777, true);
         if (!file_exists($path.'/documents/'.$eventid.'/background'))
@@ -51,7 +51,7 @@ if(isset($_POST) && !empty($_POST))
     {
         $sliderimages = explode(",", $result->slider_images);
         foreach($sliderimages as $key=>$value)
-          unlink($path.'/documents/'.$eventid.'/slider/'.$value);
+          unlink($path.'/documents/'.$eventid.'/'.$value);
         foreach($_FILES["slider_images"]["name"] as $key=>$value)
         {
             if (!file_exists($path.'/documents/'.$eventid))
@@ -93,7 +93,7 @@ require_once('head.php');?>
           <h2>Edit company</h2>
         </div>
         <div class="row" style="padding-top: 20px;">   
-          <form class="form add" id="form_company" method="post" enctype="multipart/form-data" action="createevent.php">
+          <form class="form add" id="form_company" method="post" enctype="multipart/form-data" action="editevent.php?id=<?php echo $_GET['id'];?>">
             <div class="row">
               <div class="col-md-3">
                 <label for="title">Title: <span class="required">*</span></label>
@@ -141,7 +141,7 @@ require_once('head.php');?>
             
             <div class="row" style="padding-top: 10px;">
               <div class="col-md-3">
-                <label for="brochure">Brochure: <span class="required">*</span></label>
+                <label for="brochure">Brochure: </label>
               </div>
               <div class="col-md-6">
                 <input type="file" class="form-control" name="brochure" id="brochure" value="">
@@ -150,7 +150,7 @@ require_once('head.php');?>
 
             <div class="row" style="padding-top: 10px;">
               <div class="col-md-3">
-                <label for="background_image">Background image: <span class="required">*</span></label>
+                <label for="background_image">Background image: </label>
               </div>
               <div class="col-md-6">
                 <input type="file" class="form-control" name="background_image" id="background_image" value="">
@@ -159,10 +159,10 @@ require_once('head.php');?>
 
             <div class="row" style="padding-top: 10px;">
               <div class="col-md-3">
-                <label for="slider_images">Slider images: <span class="required">*</span></label>
+                <label for="slider_images">Slider images: </label>
               </div>
               <div class="col-md-6">
-                <input type="file" class="form-control" name="slider_images[]" id="slider_images" value="">
+                <input type="file" class="form-control" name="slider_images[]" id="slider_images" multiple="multiple" value="">
               </div>
             </div>
 

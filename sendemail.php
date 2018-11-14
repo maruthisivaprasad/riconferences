@@ -9,5 +9,7 @@ $name = $_POST['name'];
 $headers = "From: $from";
 $subject = $_POST['sub'];
 $body = $_POST['message'];
-$send = mail($to, $subject, $body, $headers);
+$_SESSION['message'] = 'Thank you for contacting us. We will contact to you soon.';
+header("location: contact-us.php");
+//$send = mail($to, $subject, $body, $headers);
 ?>

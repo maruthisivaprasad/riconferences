@@ -1,6 +1,5 @@
 <?php 
 require_once('../config.php');
-$path = 'C:/xampp/htdocs/riconfarences';
 if(isset($_POST) && !empty($_POST))
 {
     $enddate1 = explode("/", $_POST['end_date']);
@@ -130,7 +129,7 @@ require_once('head.php');?>
             
             <div class="row" style="padding-top: 10px;">
               <div class="col-md-3">
-                <label for="brochure">Brochure: <span class="required">*</span></label>
+                <label for="brochure">Brochure: </label>
               </div>
               <div class="col-md-6">
                 <input type="file" class="form-control" name="brochure" id="brochure" value="">
@@ -139,7 +138,7 @@ require_once('head.php');?>
 
             <div class="row" style="padding-top: 10px;">
               <div class="col-md-3">
-                <label for="background_image">Background image: <span class="required">*</span></label>
+                <label for="background_image">Background image: </label>
               </div>
               <div class="col-md-6">
                 <input type="file" class="form-control" name="background_image" id="background_image" value="">
@@ -148,7 +147,7 @@ require_once('head.php');?>
 
             <div class="row" style="padding-top: 10px;">
               <div class="col-md-3">
-                <label for="slider_images">Slider images: <span class="required">*</span></label>
+                <label for="slider_images">Slider images: </label>
               </div>
               <div class="col-md-6">
                 <input type="file" class="form-control" name="slider_images[]" id="slider_images" multiple="multiple" value="">
