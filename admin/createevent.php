@@ -1,6 +1,6 @@
 <?php 
 require_once('../config.php');
-$path = 'C:/xampp/htdocs/riconferences';
+$path = 'C:/xampp/htdocs/riconfarences';
 if(isset($_POST) && !empty($_POST))
 {
     $enddate1 = explode("/", $_POST['end_date']);
@@ -151,7 +151,7 @@ require_once('head.php');?>
                 <label for="slider_images">Slider images: <span class="required">*</span></label>
               </div>
               <div class="col-md-6">
-                <input type="file" class="form-control" name="slider_images[]" id="slider_images" value="">
+                <input type="file" class="form-control" name="slider_images[]" id="slider_images" multiple="multiple" value="">
               </div>
             </div>
 

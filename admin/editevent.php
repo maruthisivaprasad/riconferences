@@ -1,6 +1,6 @@
 <?php 
 require_once('../config.php');
-$path = 'C:/xampp/htdocs/riconferences';
+$path = 'C:/xampp/htdocs/riconferances';
 $sql = "select * from events where eventid=".$_GET['id'];
 $res = mysqli_query($conn,$sql);
 $result = mysqli_fetch_object($res);
