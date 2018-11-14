@@ -1,7 +1,7 @@
 <?php 
 require_once('../config.php');
 require_once('head.php');
-$sql = "select * from concats";
+$sql = "select * from contacts";
 $result=mysqli_query($conn,$sql);
 ?>
 <script>
