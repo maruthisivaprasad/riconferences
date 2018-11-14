@@ -1,3 +1,4 @@
+<?php require_once('config.php');?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -126,14 +127,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <li class="nav-item dropdown-holder">
                       <a class="nav-link" href="conferences">Conferences</a>
                       <ul class="sub-menu">
-                        <li><a href="dental-conference">Dental Conference</a></li>
-                        <li><a href="climate-change">Climate change</a></li>
-                        <li><a href="food-safety">Food safety</a></li>
-                        <li><a href="health-care">Health care</a></li>
-                        <li><a href="materials-technology">Materials technology</a></li>
-                        <li><a href="petroleum-refinery">Petroleum refinery</a></li>
-                        <li><a href="world-heart-congress">World heart congress</a></li>
-                    <li><a href="nursing-conference">Nursing Conference</a></li>
+                        <?php $sql = "select * from events";
+                            $res = mysqli_query($conn,$sql);
+                            while($result = mysqli_fetch_array($res)) {
+                        ?>
+                        <li><a href="conferenceinfo.php?id=<?php echo $result['eventid'];?>"><?php echo $result['title'];?></a></li>
+                    <?php }?>
                   </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="about-us">About Us</a>

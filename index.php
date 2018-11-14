@@ -1,3 +1,4 @@
+<?php require_once('config.php');?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -159,14 +160,12 @@
 					    	    <li class="nav-item dropdown-holder">
 					    	    	<a class="nav-link" href="conferences">Conferences</a>
 					    	    	<ul class="sub-menu">
-					    	    		<li><a href="dental-conference">Dental Conference</a></li>
-					    	    		<li><a href="climate-change">Climate change</a></li>
-					    	    		<li><a href="food-safety">Food safety</a></li>
-					    	    		<li><a href="health-care">Health care</a></li>
-					    	    		<li><a href="materials-technology">Materials technology</a></li>
-					    	    		<li><a href="petroleum-refinery">Petroleum refinery</a></li>
-					    	    		<li><a href="world-heart-congress">World heart congress</a></li>
-										<li><a href="nursing-conference">Nursing Conference</a></li>
+					    	    		<?php $sql = "select * from events";
+                            $res = mysqli_query($conn,$sql);
+                            while($result = mysqli_fetch_array($res)) {
+                        ?>
+                        <li><a href="conferenceinfo.php?id=<?php echo $result['eventid'];?>"><?php echo $result['title'];?></a></li>
+                    <?php }?>
 									</ul>
 					    	    </li>
 					    	    <li class="nav-item"><a class="nav-link" href="about-us">About Us</a>
@@ -206,85 +205,20 @@
 						<p>List of upcoming conferences organized by RI Conferences.</p>
 					</div> <!-- /.theme-title -->
 					<div class="row">
-						<div class="col-lg-3 col-6">
-							<div class="single-service">
-								<div class="image-box"><a href="dental-conference"><img src="images/conferences/dental.jpg" alt=""></a></div>
-								<div class="text">
-									<h4><a href="dental-conference">Dental<br>Conference</a></h4>
-									<p>Explore the possibilities towards better Healthcare...</p>
-								</div> <!-- /.text -->
-							</div> <!-- /.single-service -->
-						</div> <!-- /.col- -->
-						<div class="col-lg-3 col-6">
-							<div class="single-service">
-								<div class="image-box"><a href="climate-change"><img src="images/conferences/climate.jpg" alt=""></a></div>
-								<div class="text">
-									<h4><a href="climate-change">Climate Change Conference</a></h4>
-									<p>Climate Change and Sustainable Futures..</p>
-
-								</div> <!-- /.text -->
-							</div> <!-- /.single-service -->
-						</div> <!-- /.col- -->
-						<div class="col-lg-3 col-6">
-							<div class="single-service">
-								<div class="image-box"><a href="food-safety"><img src="images/conferences/food-safety.jpg" alt=""></a></div>
-								<div class="text">
-									<h4><a href="food-safety">Food Safety Conference</a></h4>
-									<p>Shaping the Future of Food for a Better Tomorrow..</p>
-
-								</div> <!-- /.text -->
-							</div> <!-- /.single-service -->
-						</div> <!-- /.col- -->
-						<div class="col-lg-3 col-6">
-							<div class="single-service">
-								<div class="image-box"><a href="health-care"><img src="images/conferences/biotechnology.jpg" alt=""></a></div>
-								<div class="text">
-									<h4><a href="health-care">Biotechnology Conference</a></h4>
-									<p>Exploring Innovative Solutions in Biotech and Healthcare...</p>
-
-								</div> <!-- /.text -->
-							</div> <!-- /.single-service -->
-						</div> <!-- /.col- -->
-						<div class="col-lg-3 col-6">
-							<div class="single-service">
-								<div class="image-box"><a href="materials-technology"><img src="images/conferences/material-science.jpg" alt=""></a></div>
-								<div class="text">
-									<h4><a href="materials-technology">Material Science Conference</a></h4>
-									<p>Exchange of Technological Advances in the field of...</p>
-
-								</div> <!-- /.text -->
-							</div> <!-- /.single-service -->
-						</div> <!-- /.col- -->
-						<div class="col-lg-3 col-6">
-							<div class="single-service">
-								<div class="image-box"><a href="petroleum-refinery"><img src="images/conferences/oil-and-gas.jpg" alt=""></a></div>
-								<div class="text">
-									<h4><a href="petroleum-refinery">Oil and Gas Conference</a></h4>
-									<p>Greater adoption of low sulphur, higher octane fuels...</p>
-
-								</div> <!-- /.text -->
-							</div> <!-- /.single-service -->
-						</div> <!-- /.col- -->
-						<div class="col-lg-3 col-6">
-							<div class="single-service">
-								<div class="image-box"><a href="world-heart-congress"><img src="images/conferences/cardiology.jpg" alt=""></a></div>
-								<div class="text">
-									<h4><a href="world-heart-congress">World Heart Conference</a></h4>
-									<p>Novel Insights in Cardiology and Healthcare...</p>
-
-								</div> <!-- /.text -->
-							</div> <!-- /.single-service -->
-						</div> <!-- /.col- -->
-						<div class="col-lg-3 col-6">
-							<div class="single-service">
-								<div class="image-box"><a href="nursing-conference"><img src="images/conferences/nursing.jpg" alt=""></a></div>
-								<div class="text">
-									<h4><a href="nursing-conference">Nursing<br>Conference</a></h4>
-									<p>Advanced Concepts and Frameworks for Nursing...</p>
-
-								</div> <!-- /.text -->
-							</div> <!-- /.single-service -->
-						</div> <!-- /.col- -->
+						<?php $sql = "select * from events";
+                $res = mysqli_query($conn,$sql);
+                while($result = mysqli_fetch_array($res)) {
+            ?>
+                <div class="col-lg-3 col-6">
+                    <div class="single-service">
+                        <div class="image-box"><a href="conferenceinfo.php?id=<?php echo $result['eventid'];?>"><img src="documents/<?php echo $result['eventid'];?>/<?php echo $result['background_image'];?>" alt=""></a></div>
+                        <div class="text">
+                            <h4><a href="conferenceinfo.php?id=<?php echo $result['eventid'];?>"><?php echo $result['title'];?></a></h4>
+                            <p><?php echo $result['theme'];?></p>
+                        </div> <!-- /.text -->
+                    </div> <!-- /.single-service -->
+                </div> <!-- /.col- -->
+            <?php }?>
 					</div> <!-- /.row -->
 				</div> <!-- /.container -->
 			</div> <!-- /.our-service -->
