@@ -16,9 +16,9 @@ $result = mysqli_fetch_object($res);
                   <div class="action-items">
                      <ul class="list-inline">
                         <!-- <li class="mt-2"><a href="#team"><button class="btn btn-sm btn-primary"> Organizing Committee</button></a></li> -->
-                        <li class="mt-2"><a href="submit-abstract-dental-conference"><button class=" btn btn-sm btn-danger"> Submit Abstract </button></a></li>
+                        <li class="mt-2"><a href="submit-conference.php?id=<?php echo $result->eventid;?>"><button class=" btn btn-sm btn-danger"> Submit Abstract </button></a></li>
                         <li class="mt-2 g-mx-5"><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SBH8A3TJMFEW4"><button class="btn btn-lg btn-warning">Register Now  @99</button></a></li>
-                        <li class="mt-2"><a href="documents/<?php echo $result->eventid;?>/<?php echo $result->brochure;?>" target="_blank"><button class=" btn btn-sm btn-success"> Download Brochure</button></a></li>
+                        <?php if(!empty($result->brochure)) {?><li class="mt-2"><a href="documents/<?php echo $result->eventid;?>/<?php echo $result->brochure;?>" target="_blank"><button class=" btn btn-sm btn-success"> Download Brochure</button></a></li><?php }?>
                      </ul>
                   </div>
                </div>
@@ -45,13 +45,17 @@ $result = mysqli_fetch_object($res);
                   <div class="col-xl-9 col-lg-8 col-12">
                      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
+                           <?php if(!empty($result->slider_images)) {?>
                            <div class="carousel-item">
                                <?php $sliderimages = explode(",", $result->slider_images);
-                                    foreach($sliderimages as $key=>$value) {?>
-                                        <a href="/submit-abstract-dental-conference"><img class="d-block w-100" src="documents/<?php echo $result->eventid;?>/<?php echo $value;?>" alt="First slide"></a>
-                                    <?php }?>
+                                 if($sliderimages > 0) {
+                                    foreach($sliderimages as $key=>$value) {
+                                       if(!empty($value)) {
+                                       ?>
+                                        <a href="submit-conference.php?id=<?php echo $result->eventid;?>"><img class="d-block w-100" src="documents/<?php echo $result->eventid;?>/<?php echo $value;?>" alt="First slide"></a>
+                                    <?php }}}?>
                            </div>
-                           
+                           <?php }?>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -64,7 +68,7 @@ $result = mysqli_fetch_object($res);
                      </div>
                      <!-- team image starting -->
                      <!-- /.col- -->
-                     <div class="theme-title text-center"><h2 class="font-size-30 text-center mt-50 mb-50">Annual Dental And Oral Health Congress</h2></div>
+                     <div class="theme-title text-center"><h2 class="font-size-30 text-center mt-50 mb-50"><?php echo $result->theme;?></h2></div>
                      <!-- Tabs starting -->
                      <div class="sidebar-box blog-categories">
                        <?php echo $result->description;?>
@@ -77,7 +81,7 @@ $result = mysqli_fetch_object($res);
                      <h3 class="margin-bottom: 20px;">Quick Links</h3>
                      <ul>
                         <!-- <li class="mt-2"><a href="#team"><button class="btn btn-sm btn-primary"> Organizing Committee</button></a></li> -->
-                        <li class="mt-2"><a href="submit-abstract.html"><button class=" btn btn-sm btn-danger"> Submit Abstract </button></a></li>
+                        <li class="mt-2"><a href="submit-conference.php?id=<?php echo $result->eventid;?>"><button class=" btn btn-sm btn-danger"> Submit Abstract </button></a></li>
                         <li class="mt-2"><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SBH8A3TJMFEW4"><button class=" btn btn-sm btn-warning">Register Now  @99</button></a></li>
                         <li class="mt-2"><a href="documents/dental-brochure.pdf" target="_blank"><button class=" btn btn-sm btn-success">Download Brochure </button></a></li>
                      </ul>

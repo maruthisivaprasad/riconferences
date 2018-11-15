@@ -123,9 +123,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </button>
                 <div class="collapse navbar-collapse clearfix" id="navbarNav">
                   <ul class="navbar-nav nav">
-                    <li class="nav-item active"><a class="nav-link" href="index">Home</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li>
                     <li class="nav-item dropdown-holder">
-                      <a class="nav-link" href="conferences">Conferences</a>
+                      <a class="nav-link" href="conferences.php">Conferences</a>
                       <ul class="sub-menu">
                         <?php $sql = "select * from events";
                             $res = mysqli_query($conn,$sql);
@@ -135,10 +135,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <?php }?>
                   </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="about-us">About Us</a>
+                    <li class="nav-item"><a class="nav-link" href="about-us.php">About Us</a>
                     </li>
                     <li class="nav-item dot-fix mr-0">
-                      <a class="nav-link" href="contact-us">Contact us</a>
+                      <a class="nav-link" href="contact-us.php">Contact us</a>
                     </li>
                   </ul>
                 </div>

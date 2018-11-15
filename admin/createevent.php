@@ -4,62 +4,63 @@ if(isset($_POST) && !empty($_POST))
 {
     $enddate1 = explode("/", $_POST['end_date']);
     $enddate = $enddate1[2]."-".$enddate1[0]."-".$enddate1[1];
-    $sql = "insert into events (title, date, enddate, location, theme, description, key_topics) values ('".$_POST['title']."', '".$_POST['date']."', '".$enddate."', '".$_POST['location']."', '".$_POST['theme']."', '".htmlentities($_POST['description'])."', '".htmlentities($_POST['key_topics'])."')";
+    $sql = "insert into events (title, date, enddate, location, theme, description, key_topics) values ('".$_POST['title']."', '".$_POST['date']."', '".$enddate."', '".$_POST['location']."', '".$_POST['theme']."', '".htmlentities(mysql_real_escape_string($_POST['description']))."', '".htmlentities(mysql_real_escape_string($_POST['key_topics']))."')";
     mysqli_query($conn, $sql);
     $eventid = $conn->insert_id;
     $sliderfile = $brochurefile = $backgroundfile = '';
-    if(isset($_FILES["brochure"]["name"]) && !empty($_FILES["brochure"]["name"]))
-    {
-        if (!file_exists($path.'/documents/'.$eventid))
-            mkdir($path.'/documents/'.$eventid, 0777, true);
-        if (!file_exists($path.'/documents/'.$eventid.'/brochure'))
-           mkdir($path.'/documents/'.$eventid.'/brochure', 0777, true);
+    if($eventid > 0) {
+      if(isset($_FILES["brochure"]["name"]) && !empty($_FILES["brochure"]["name"]))
+      {
+          if (!file_exists($path.'/documents/'.$eventid))
+              mkdir($path.'/documents/'.$eventid, 0777, true);
+          if (!file_exists($path.'/documents/'.$eventid.'/brochure'))
+             mkdir($path.'/documents/'.$eventid.'/brochure', 0777, true);
 
-        $extension = pathinfo($_FILES["brochure"]["name"], PATHINFO_EXTENSION);
-        $name = substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, '8');
-        $target_file = $path.'/documents/'.$eventid.'/brochure/'.$name.".".$extension;
-        
-        if(move_uploaded_file($_FILES["brochure"]["tmp_name"], $target_file))
-            $brochurefile = 'brochure/'.$name.'.'.$extension;
+          $extension = pathinfo($_FILES["brochure"]["name"], PATHINFO_EXTENSION);
+          $name = substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, '8');
+          $target_file = $path.'/documents/'.$eventid.'/brochure/'.$name.".".$extension;
+          
+          if(move_uploaded_file($_FILES["brochure"]["tmp_name"], $target_file))
+              $brochurefile = 'brochure/'.$name.'.'.$extension;
+      }
+
+      if(isset($_FILES["background_image"]["name"]) && !empty($_FILES["background_image"]["name"]))
+      {
+          if (!file_exists($path.'/documents/'.$eventid))
+              mkdir($path.'/documents/'.$eventid, 0777, true);
+          if (!file_exists($path.'/documents/'.$eventid.'/background'))
+             mkdir($path.'/documents/'.$eventid.'/background', 0777, true);
+
+          $extension = pathinfo($_FILES["background_image"]["name"], PATHINFO_EXTENSION);
+          $name = substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, '8');
+          $target_file = $path.'/documents/'.$eventid.'/background/'.$name.".".$extension;
+          
+          if(move_uploaded_file($_FILES["background_image"]["tmp_name"], $target_file))
+              $backgroundfile = 'background/'.$name.'.'.$extension;
+      }
+
+      if(isset($_FILES["slider_images"]["name"]) && !empty($_FILES["slider_images"]["name"]))
+      {
+          foreach($_FILES["slider_images"]["name"] as $key=>$value)
+          {
+              if (!file_exists($path.'/documents/'.$eventid))
+                  mkdir($path.'/documents/'.$eventid, 0777, true);
+              if (!file_exists($path.'/documents/'.$eventid.'/slider'))
+                 mkdir($path.'/documents/'.$eventid.'/slider', 0777, true);
+
+              $extension = pathinfo($_FILES["slider_images"]["name"][$key], PATHINFO_EXTENSION);
+              $name = substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, '8');
+              $target_file = $path.'/documents/'.$eventid.'/slider/'.$name.".".$extension;
+              
+              if(move_uploaded_file($_FILES["slider_images"]["tmp_name"][$key], $target_file))
+                  $sliderfile .= 'slider/'.$name.'.'.$extension.",";
+          }
+          if(!empty($sliderfile))
+              $sliderfile = rtrim($sliderfile, ",");
+      }  
+      $sql = "update events set background_image='".$backgroundfile."', brochure='".$brochurefile."', slider_images='".$sliderfile."' where eventid=".$eventid;
+      mysqli_query($conn, $sql); 
     }
-
-    if(isset($_FILES["background_image"]["name"]) && !empty($_FILES["background_image"]["name"]))
-    {
-        if (!file_exists($path.'/documents/'.$eventid))
-            mkdir($path.'/documents/'.$eventid, 0777, true);
-        if (!file_exists($path.'/documents/'.$eventid.'/background'))
-           mkdir($path.'/documents/'.$eventid.'/background', 0777, true);
-
-        $extension = pathinfo($_FILES["background_image"]["name"], PATHINFO_EXTENSION);
-        $name = substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, '8');
-        $target_file = $path.'/documents/'.$eventid.'/background/'.$name.".".$extension;
-        
-        if(move_uploaded_file($_FILES["background_image"]["tmp_name"], $target_file))
-            $backgroundfile = 'background/'.$name.'.'.$extension;
-    }
-
-    if(isset($_FILES["slider_images"]["name"]) && !empty($_FILES["slider_images"]["name"]))
-    {
-        foreach($_FILES["slider_images"]["name"] as $key=>$value)
-        {
-            if (!file_exists($path.'/documents/'.$eventid))
-                mkdir($path.'/documents/'.$eventid, 0777, true);
-            if (!file_exists($path.'/documents/'.$eventid.'/slider'))
-               mkdir($path.'/documents/'.$eventid.'/slider', 0777, true);
-
-            $extension = pathinfo($_FILES["slider_images"]["name"][$key], PATHINFO_EXTENSION);
-            $name = substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, '8');
-            $target_file = $path.'/documents/'.$eventid.'/slider/'.$name.".".$extension;
-            
-            if(move_uploaded_file($_FILES["slider_images"]["tmp_name"][$key], $target_file))
-                $sliderfile .= 'slider/'.$name.'.'.$extension.",";
-        }
-        if(!empty($sliderfile))
-            $sliderfile = rtrim($sliderfile, ",");
-    }  
-
-    $sql = "update events set background_image='".$backgroundfile."', brochure='".$brochurefile."', slider_images='".$sliderfile."' where eventid=".$eventid;
-    mysqli_query($conn, $sql); 
     header("location: events.php");
 }
 require_once('head.php');?>
@@ -156,7 +157,7 @@ require_once('head.php');?>
 
             <div class="row" style="padding-top: 10px;">
               <div class="col-md-3">
-                <label for="description">Description: <span class="required">*</span></label>
+                <label for="description">Description:</label>
               </div>
               <div class="col-md-6">
                 <textarea name="description" class="form-control" id="description"></textarea>
@@ -168,7 +169,7 @@ require_once('head.php');?>
 
             <div class="row" style="padding-top: 10px;">
               <div class="col-md-3">
-                <label for="key_topics">Key Topics: <span class="required">*</span></label>
+                <label for="key_topics">Key Topics: </label>
               </div>
               <div class="col-md-6">
                 <textarea name="key_topics" class="form-control" id="key_topics"></textarea>
@@ -179,7 +180,7 @@ require_once('head.php');?>
             </div>
 
             <div class="row" style="padding-top: 10px;">
-              <button class="btn btn-success" type="submit">Add company</button>
+              <button class="btn btn-success" type="submit">Add Event</button>
             </div>
           </form> 
         </div>

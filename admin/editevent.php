@@ -29,6 +29,8 @@ if(isset($_POST) && !empty($_POST))
         
         if(move_uploaded_file($_FILES["brochure"]["tmp_name"], $target_file))
             $brochurefile = 'brochure/'.$name.'.'.$extension;
+        $sql = "update events set brochure='".$brochurefile."' where eventid=".$eventid;
+      mysqli_query($conn, $sql); 
     }
 
     if(isset($_FILES["background_image"]["name"]) && !empty($_FILES["background_image"]["name"]))
@@ -45,6 +47,8 @@ if(isset($_POST) && !empty($_POST))
         
         if(move_uploaded_file($_FILES["background_image"]["tmp_name"], $target_file))
             $backgroundfile = 'background/'.$name.'.'.$extension;
+        $sql = "update events set background_image='".$backgroundfile."' where eventid=".$eventid;
+        mysqli_query($conn, $sql); 
     }
 
     if(isset($_FILES["slider_images"]["name"]) && !empty($_FILES["slider_images"]["name"]))
@@ -68,9 +72,11 @@ if(isset($_POST) && !empty($_POST))
         }
         if(!empty($sliderfile))
             $sliderfile = rtrim($sliderfile, ",");
+        $sql = "update events set slider_images='".$sliderfile."' where eventid=".$eventid;
+    mysqli_query($conn, $sql); 
     }  
 
-    $sql = "update events set title='".$_POST['title']."', date='".$_POST['date']."', enddate='".$_POST['enddate']."', location='".$_POST['location']."', theme='".$_POST['theme']."', description='".$_POST['description']."', key_topics='".$_POST['key_topics']."', background_image='".$backgroundfile."', brochure='".$brochurefile."', slider_images='".$sliderfile."' where eventid=".$eventid;
+    $sql = "update events set title='".$_POST['title']."', date='".$_POST['date']."', enddate='".$_POST['enddate']."', location='".$_POST['location']."', theme='".$_POST['theme']."', description='".mysql_real_escape_string($_POST['description'])."', key_topics='".mysql_real_escape_string($_POST['key_topics'])."' where eventid=".$eventid;
     mysqli_query($conn, $sql); 
     header("location: events.php");
 }
@@ -168,7 +174,7 @@ require_once('head.php');?>
 
             <div class="row" style="padding-top: 10px;">
               <div class="col-md-3">
-                <label for="description">Description: <span class="required">*</span></label>
+                <label for="description">Description:</label>
               </div>
               <div class="col-md-6">
                 <textarea name="description" class="form-control" id="description"><?php echo $result->description;?></textarea>
@@ -180,7 +186,7 @@ require_once('head.php');?>
 
             <div class="row" style="padding-top: 10px;">
               <div class="col-md-3">
-                <label for="key_topics">Key Topics: <span class="required">*</span></label>
+                <label for="key_topics">Key Topics: </label>
               </div>
               <div class="col-md-6">
                 <textarea name="key_topics" class="form-control" id="key_topics"><?php echo $result->key_topics;?></textarea>
@@ -191,7 +197,7 @@ require_once('head.php');?>
             </div>
 
             <div class="row" style="padding-top: 10px;">
-              <button class="btn btn-success" type="submit">Edit company</button>
+              <button class="btn btn-success" type="submit">Edit Event</button>
             </div>
           </form> 
         </div>

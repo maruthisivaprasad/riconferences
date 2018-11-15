@@ -27,8 +27,6 @@ $result=mysqli_query($conn,$sql);
                             <th>End Date</th>
                             <th>Location</th>
                             <th>Theme</th>
-                            <th>Description</th>
-                            <th>Key Topics</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -40,9 +38,7 @@ $result=mysqli_query($conn,$sql);
                             <td><?php echo $rec['enddate'];?></td>
                             <td><?php echo $rec['location'];?></td>
                             <td><?php echo $rec['theme'];?></td>
-                            <td><?php echo $rec['description'];?></td>
-                            <td><?php echo $rec['key_topics'];?></td>
-                            <td><a href="editevent.php?id=<?php echo $rec['eventid'];?>"><button type="button" class="btn btn-primary" id="edit_event">Edit</button></a> | <button type="button" class="btn btn-primary" id="deleteevent" onclick="getdelete('<?php echo $rec['eventid'];?>')">Delete</button></td>
+                            <td><a href="viewevent.php?id=<?php echo $rec['eventid'];?>"><button type="button" class="btn btn-primary" id="view_event">View</button></a> | <a href="editevent.php?id=<?php echo $rec['eventid'];?>"><button type="button" class="btn btn-primary" id="edit_event">Edit</button></a> | <button type="button" class="btn btn-primary" id="deleteevent" onclick="getdelete('<?php echo $rec['eventid'];?>')">Delete</button></td>
                         </tr>
                     <?php }?>
                     </tbody>
