@@ -114,7 +114,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="main-menu-wrapper clearfix">
           <div class="container clearfix">
             <!-- Logo -->
-            <div class="logo float-left"><a href="index"><img src="images/logo/logo.png" alt="Logo"></a></div>
+            <div class="logo float-left"><a href="index.php"><img src="images/logo/logo.png" alt="Logo"></a></div>
 
             <!-- ============================ Theme Menu ========================= -->
             <nav class="navbar-expand-lg float-right navbar-light border-bottom" id="mega-menu-wrapper">
@@ -125,7 +125,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                   <ul class="navbar-nav nav">
                     <li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li>
                     <li class="nav-item dropdown-holder">
-                      <a class="nav-link" href="conferences.php">Conferences</a>
+                      <a class="nav-link" href="#">Conferences</a>
                       <ul class="sub-menu">
                         <?php $sql = "select * from events";
                             $res = mysqli_query($conn,$sql);

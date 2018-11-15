@@ -4,7 +4,16 @@ $sql = "select * from events where eventid=".$_GET['id'];
 $eventid = $_GET['id'];
 $res = mysqli_query($conn,$sql);
 $result = mysqli_fetch_object($res);
+if(!empty($result->background_image))
+   $banner = "documents/".$result->eventid."/".$result->background_image;
+else
+   $banner = 'images/banners/dentalcare.jpg';
 ?>
+<style type="text/css">
+   .conference-banner-dental {
+    background: url('<?php echo $banner;?>') no-repeat center !important;
+ }
+</style>
     <title>Dental Conference | RI Conferences</title>
            <div class="jumbotron jumbotron-fluid bg-dark conference-banner-dental">
             <div class="overlay">

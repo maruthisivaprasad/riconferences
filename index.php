@@ -147,7 +147,7 @@
 				<div class="main-menu-wrapper clearfix">
 					<div class="container clearfix">
 						<!-- Logo -->
-						<div class="logo float-left"><a href="index"><img src="images/logo/logo.png" alt="Logo"></a></div>
+						<div class="logo float-left"><a href="index.php"><img src="images/logo/logo.png" alt="Logo"></a></div>
 
 						<!-- ============================ Theme Menu ========================= -->
 						<nav class="navbar-expand-lg float-right navbar-light border-bottom" id="mega-menu-wrapper">
@@ -156,9 +156,9 @@
 					    	</button>
 					    	<div class="collapse navbar-collapse clearfix" id="navbarNav">
 					    	  <ul class="navbar-nav nav">
-					    	    <li class="nav-item active"><a class="nav-link" href="index">Home</a></li>
+					    	    <li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li>
 					    	    <li class="nav-item dropdown-holder">
-					    	    	<a class="nav-link" href="conferences">Conferences</a>
+					    	    	<a class="nav-link" href="#">Conferences</a>
 					    	    	<ul class="sub-menu">
 					    	    		<?php $sql = "select * from events";
                             $res = mysqli_query($conn,$sql);
@@ -168,10 +168,10 @@
                     <?php }?>
 									</ul>
 					    	    </li>
-					    	    <li class="nav-item"><a class="nav-link" href="about-us">About Us</a>
+					    	    <li class="nav-item"><a class="nav-link" href="about-us.php">About Us</a>
 					    	    </li>
 					    	    <li class="nav-item dot-fix mr-0">
-					    	    	<a class="nav-link" href="contact-us">Contact us</a>
+					    	    	<a class="nav-link" href="contact-us.php">Contact us</a>
 					    	    </li>
 					    	  </ul>
 					    	</div>
