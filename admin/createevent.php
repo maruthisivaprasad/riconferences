@@ -80,7 +80,7 @@ require_once('head.php');
         </div>
         <div class="col-md-10" style="padding-top: 20px;">   
             <div class="row" style="padding-top: 20px;"> 
-                <h2>Add company</h2>
+                <h2>Add Event</h2>
             </div>
             <div class="row" style="padding-top: 20px;">   
                 <form class="form add" id="form_company" method="post" enctype="multipart/form-data" action="createevent.php">
