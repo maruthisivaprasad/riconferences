@@ -8,5 +8,6 @@
     <a href="conferance.php" <?php if (strpos($_SERVER['REQUEST_URI'], "conferance.php") > -1) {
     echo "class = 'active'";
 } ?>>Conferance</a>
+	<a href="logout.php">Logout</a>
 </div>
 

@@ -5,6 +5,7 @@ if (isset($_POST['password']) && isset($_POST['username'])) {
     $login_check = mysqli_query($conn, $sql);
     if (!empty($login_check)) {
         $_SESSION['errormessage'] = '';
+        $_SESSION['username'] = $_POST['username'];
         header('Location: events.php');
     } else {
         $_SESSION['errormessage'] = 'Username and password not matching';

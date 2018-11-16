@@ -3,7 +3,7 @@ require_once('../config.php');
 if (isset($_POST) && !empty($_POST)) {
     $enddate1 = explode("/", $_POST['end_date']);
     $enddate = $enddate1[2] . "-" . $enddate1[0] . "-" . $enddate1[1];
-    $sql = "insert into events (title, date, enddate, location, theme, description, key_topics) values ('" . $_POST['title'] . "', '" . $_POST['date'] . "', '" . $enddate . "', '" . $_POST['location'] . "', '" . $_POST['theme'] . "', '" . htmlentities(mysql_real_escape_string($_POST['description'])) . "', '" . htmlentities(mysql_real_escape_string($_POST['key_topics'])) . "')";
+    $sql = "insert into events (title, date, enddate, location, theme, description, key_topics) values ('" . $_POST['title'] . "', '" . $_POST['date'] . "', '" . $enddate . "', '" . $_POST['location'] . "', '" . $_POST['theme'] . "', '" . htmlentities(addslashes($_POST['description'])) . "', '" . htmlentities(addslashes($_POST['key_topics'])) . "')";
     mysqli_query($conn, $sql);
     $eventid = $conn->insert_id;
     $sliderfile = $brochurefile = $backgroundfile = '';

@@ -47,7 +47,7 @@ if (isset($_POST) && !empty($_POST)) {
         mysqli_query($conn, $sql);
     }
 
-    if (isset($_FILES["slider_images"]["name"]) && !empty($_FILES["slider_images"]["name"])) {
+    if (isset($_FILES["slider_images"]["name"][0]) && !empty($_FILES["slider_images"]["name"][0])) {
         $sliderimages = explode(",", $result->slider_images);
         foreach ($sliderimages as $key => $value)
             unlink($path . '/documents/' . $eventid . '/' . $value);
@@ -70,7 +70,7 @@ if (isset($_POST) && !empty($_POST)) {
         mysqli_query($conn, $sql);
     }
 
-    $sql = "update events set title='" . $_POST['title'] . "', date='" . $_POST['date'] . "', enddate='" . $_POST['enddate'] . "', location='" . $_POST['location'] . "', theme='" . $_POST['theme'] . "', description='" . mysql_real_escape_string($_POST['description']) . "', key_topics='" . mysql_real_escape_string($_POST['key_topics']) . "' where eventid=" . $eventid;
+    $sql = "update events set title='" . $_POST['title'] . "', date='" . $_POST['date'] . "', enddate='" . $enddate . "', location='" . $_POST['location'] . "', theme='" . $_POST['theme'] . "', description='" . htmlentities(addslashes($_POST['description'])) . "', key_topics='" . htmlentities(addslashes($_POST['key_topics'])) . "' where eventid=" . $eventid;
     mysqli_query($conn, $sql);
     header("location: events.php");
 }
