@@ -54,17 +54,16 @@ else
                   <div class="col-xl-9 col-lg-8 col-12">
                      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
-                           <?php if(!empty($result->slider_images)) {?>
-                           <div class="carousel-item">
-                               <?php $sliderimages = explode(",", $result->slider_images);
-                                 if($sliderimages > 0) {
+                           <?php if(!empty($result->slider_images)) {
+                               $sliderimages = explode(",", $result->slider_images);
+                                if($sliderimages > 0) {$a = 0;
                                     foreach($sliderimages as $key=>$value) {
                                        if(!empty($value)) {
                                        ?>
+                                       <div class="carousel-item <?php if($a==0) {?>active<?php }?>">
                                         <a href="submit-conference.php?id=<?php echo $result->eventid;?>"><img class="d-block w-100" src="documents/<?php echo $result->eventid;?>/<?php echo $value;?>" alt="First slide"></a>
-                                    <?php }}}?>
-                           </div>
-                           <?php }?>
+                                        </div>
+                            <?php $a++;}}}}?>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -80,7 +79,7 @@ else
                      <div class="theme-title text-center"><h2 class="font-size-30 text-center mt-50 mb-50"><?php echo $result->theme;?></h2></div>
                      <!-- Tabs starting -->
                      <div class="sidebar-box blog-categories">
-                       <?php echo $result->description;?>
+                       <?php echo html_entity_decode($result->description);?>
                      </div>
                      <!-- Tabs ending -->
                </div>
@@ -113,7 +112,7 @@ else
          <div class="">
       <div class="conference-subjects padding-lg">
          <h4 class="text-center padding-sm bg-success-gradient mb-5 mt-5">Keytopics</h4>
-         <?php echo $result->key_topics;?>
+         <?php echo html_entity_decode($result->key_topics);?>
          </div>
        </div>
      </div>

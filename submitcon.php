@@ -20,5 +20,5 @@ if(isset($_FILES["uploadfile"]["name"]) && !empty($_FILES["uploadfile"]["name"])
     $sql = "update submit_conferance set uploadfile='".$conferancefile."' where id=".$confid;
   	mysqli_query($conn, $sql); 
 }
-header("location: submit-conference.php?id=".$_POST['eventid']);
+header("location: thank-you.php");
 ?>

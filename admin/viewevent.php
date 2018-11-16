@@ -51,6 +51,11 @@ $result = mysqli_fetch_object($res);
             </div>
             <hr>
             <div class="row">
+                <div class="col-md-2">Thumb Image</div>
+                <div class="col-md-8"><?php if (!empty($result->thumb_image)) { ?><img src="../documents/<?php echo $result->eventid; ?>/<?php echo $result->thumb_image; ?>" alt=""><?php } ?></div>
+            </div>
+            <hr>
+            <div class="row">
                 <div class="col-md-2">Background Image</div>
                 <div class="col-md-4"><?php if (!empty($result->background_image)) { ?><img src="../documents/<?php echo $result->eventid; ?>/<?php echo $result->background_image; ?>" alt=""><?php } ?></div>
             </div>

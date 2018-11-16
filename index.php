@@ -211,7 +211,7 @@
             ?>
                 <div class="col-lg-3 col-6">
                     <div class="single-service">
-                        <div class="image-box"><a href="conferenceinfo.php?id=<?php echo $result['eventid'];?>"><img src="documents/<?php echo $result['eventid'];?>/<?php echo $result['background_image'];?>" alt=""></a></div>
+                        <div class="image-box"><a href="conferenceinfo.php?id=<?php echo $result['eventid'];?>"><img src="documents/<?php echo $result['eventid'];?>/<?php echo $result['thumb_image'];?>" alt=""></a></div>
                         <div class="text">
                             <h4><a href="conferenceinfo.php?id=<?php echo $result['eventid'];?>"><?php echo $result['title'];?></a></h4>
                             <p><?php echo $result['theme'];?></p>

@@ -6,8 +6,22 @@ if (isset($_POST) && !empty($_POST)) {
     $sql = "insert into events (title, date, enddate, location, theme, description, key_topics) values ('" . $_POST['title'] . "', '" . $_POST['date'] . "', '" . $enddate . "', '" . $_POST['location'] . "', '" . $_POST['theme'] . "', '" . htmlentities(addslashes($_POST['description'])) . "', '" . htmlentities(addslashes($_POST['key_topics'])) . "')";
     mysqli_query($conn, $sql);
     $eventid = $conn->insert_id;
-    $sliderfile = $brochurefile = $backgroundfile = '';
+    $sliderfile = $brochurefile = $backgroundfile = $thumbfile = '';
     if ($eventid > 0) {
+        if (isset($_FILES["thumb_image"]["name"]) && !empty($_FILES["thumb_image"]["name"])) {
+            if (!file_exists($path . '/documents/' . $eventid))
+                mkdir($path . '/documents/' . $eventid, 0777, true);
+            if (!file_exists($path . '/documents/' . $eventid . '/thumb'))
+                mkdir($path . '/documents/' . $eventid . '/thumb', 0777, true);
+
+            $extension = pathinfo($_FILES["thumb_image"]["name"], PATHINFO_EXTENSION);
+            $name = substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, '8');
+            $target_file = $path . '/documents/' . $eventid . '/thumb/' . $name . "." . $extension;
+
+            if (move_uploaded_file($_FILES["thumb_image"]["tmp_name"], $target_file))
+                $thumbfile = 'thumb/' . $name . '.' . $extension;
+        }
+        
         if (isset($_FILES["brochure"]["name"]) && !empty($_FILES["brochure"]["name"])) {
             if (!file_exists($path . '/documents/' . $eventid))
                 mkdir($path . '/documents/' . $eventid, 0777, true);
@@ -53,7 +67,7 @@ if (isset($_POST) && !empty($_POST)) {
             if (!empty($sliderfile))
                 $sliderfile = rtrim($sliderfile, ",");
         }
-        $sql = "update events set background_image='" . $backgroundfile . "', brochure='" . $brochurefile . "', slider_images='" . $sliderfile . "' where eventid=" . $eventid;
+        $sql = "update events set thumb_image='" . $thumbfile . "', background_image='" . $backgroundfile . "', brochure='" . $brochurefile . "', slider_images='" . $sliderfile . "' where eventid=" . $eventid;
         mysqli_query($conn, $sql);
     }
     header("location: events.php");
@@ -137,7 +151,16 @@ require_once('head.php');
                             <input type="file" class="form-control" name="brochure" id="brochure" value="">
                         </div>
                     </div>
-
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="thumb_image">Thumb Image: </label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="file" class="form-control" name="thumb_image" id="thumb_image" value="">
+                        </div>
+                    </div>
+                    
                     <div class="row" style="padding-top: 10px;">
                         <div class="col-md-3">
                             <label for="background_image">Background image: </label>

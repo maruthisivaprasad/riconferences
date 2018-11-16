@@ -12,7 +12,24 @@ if (!empty($result->enddate)) {
 if (isset($_POST) && !empty($_POST)) {
     $enddate1 = explode("/", $_POST['end_date']);
     $enddate = $enddate1[2] . "-" . $enddate1[0] . "-" . $enddate1[1];
-    $sliderfile = $brochurefile = $backgroundfile = '';
+    $sliderfile = $brochurefile = $backgroundfile = $thumbfile = '';
+    if (isset($_FILES["thumb_image"]["name"]) && !empty($_FILES["thumb_image"]["name"])) {
+        unlink($path . '/documents/' . $eventid . '/' . $result->thumb_image);
+        if (!file_exists($path . '/documents/' . $eventid))
+            mkdir($path . '/documents/' . $eventid, 0777, true);
+        if (!file_exists($path . '/documents/' . $eventid . '/thumb'))
+            mkdir($path . '/documents/' . $eventid . '/thumb', 0777, true);
+
+        $extension = pathinfo($_FILES["thumb_image"]["name"], PATHINFO_EXTENSION);
+        $name = substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, '8');
+        $target_file = $path . '/documents/' . $eventid . '/thumb/' . $name . "." . $extension;
+
+        if (move_uploaded_file($_FILES["thumb_image"]["tmp_name"], $target_file))
+            $thumbfile = 'thumb/' . $name . '.' . $extension;
+        $sql = "update events set thumb_image='" . $thumbfile . "' where eventid=" . $eventid;
+        mysqli_query($conn, $sql);
+    }
+    
     if (isset($_FILES["brochure"]["name"]) && !empty($_FILES["brochure"]["name"])) {
         unlink($path . '/documents/' . $eventid . '/' . $result->brochure);
         if (!file_exists($path . '/documents/' . $eventid))
@@ -29,7 +46,7 @@ if (isset($_POST) && !empty($_POST)) {
         $sql = "update events set brochure='" . $brochurefile . "' where eventid=" . $eventid;
         mysqli_query($conn, $sql);
     }
-
+    
     if (isset($_FILES["background_image"]["name"]) && !empty($_FILES["background_image"]["name"])) {
         unlink($path . '/documents/' . $eventid . '/' . $result->background_image);
         if (!file_exists($path . '/documents/' . $eventid))
@@ -153,7 +170,16 @@ require_once('head.php');
                             <input type="file" class="form-control" name="brochure" id="brochure" value="">
                         </div>
                     </div>
-
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="thumb_image">Thumb Image: </label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="file" class="form-control" name="thumb_image" id="thumb_image" value="">
+                        </div>
+                    </div>
+                    
                     <div class="row" style="padding-top: 10px;">
                         <div class="col-md-3">
                             <label for="background_image">Background image: </label>
