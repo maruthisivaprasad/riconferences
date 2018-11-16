@@ -1,22 +1,22 @@
-<?php 
+<?php
 require_once('../config.php');
 require_once('head.php');
 $sql = "select * from submit_conferance";
-$result=mysqli_query($conn,$sql);
+$result = mysqli_query($conn, $sql);
 ?>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('#concat').DataTable();
-    } );
+    });
 </script>
 <body>
-    <div class="row">
+    <div>
         <div class="col-md-2">
-            <?php require_once('menu.php');?>
+            <?php require_once('menu.php'); ?>
         </div>
         <div class="col-md-10" style="padding-top: 20px;">   
-            <div class="row" style="padding-top: 20px;">     
-                <table id="concat" class="display" style="width:100%">
+            <div class="row table-responsive" style="padding-top: 20px;">     
+                <table id="concat" class="display table" style="width:100%">
                     <thead>
                         <tr>
                             <th>Event Name</th>
@@ -28,22 +28,27 @@ $result=mysqli_query($conn,$sql);
                         </tr>
                     </thead>
                     <tbody>
-                        <?php while($rec = mysqli_fetch_array($result)) {
-                            if($rec['eventid'] > 0) {
-                                $sql1 = "select * from events where eventid=".$rec['eventid'];
-                                $res1 = mysqli_query($conn,$sql1);
+                        <?php
+                        while ($rec = mysqli_fetch_array($result)) {
+                            if ($rec['eventid'] > 0) {
+                                $sql1 = "select * from events where eventid=" . $rec['eventid'];
+                                $res1 = mysqli_query($conn, $sql1);
                                 $result1 = mysqli_fetch_object($res1);
                             }
                             ?>
-                        <tr>
-                            <td><?php echo $result1->title;?></td>
-                            <td><?php echo $rec['user_name'];?></td>
-                            <td><?php echo $rec['user_email'];?></td>
-                            <td><?php echo $rec['contact_number'];?></td>
-                            <td><?php echo $rec['user_presentation'];?></td>
-                            <td><a href="viewconferance.php?id=<?php echo $rec['id'];?>"><button type="button" class="btn btn-primary" id="view_event">View</button></a></td>
-                        </tr>
-                    <?php }?>
+                            <tr>
+                                <td><?php echo $result1->title; ?></td>
+                                <td><?php echo $rec['user_name']; ?></td>
+                                <td><?php echo $rec['user_email']; ?></td>
+                                <td><?php echo $rec['contact_number']; ?></td>
+                                <td><?php echo $rec['user_presentation']; ?></td>
+                                <td>
+                                    <a href="viewconferance.php?id=<?php echo $rec['id']; ?>">
+                                        <i class="glyphicon glyphicon-eye-open" id="view_event"></i>
+                                    </a>
+                                </td>
+                            </tr>
+<?php } ?>
                     </tbody>
                 </table>
             </div>

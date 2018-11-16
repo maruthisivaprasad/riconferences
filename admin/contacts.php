@@ -1,22 +1,22 @@
-<?php 
+<?php
 require_once('../config.php');
 require_once('head.php');
 $sql = "select * from contacts";
-$result=mysqli_query($conn,$sql);
+$result = mysqli_query($conn, $sql);
 ?>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('#concat').DataTable();
-    } );
+    });
 </script>
 <body>
-    <div class="row">
+    <div>
         <div class="col-md-2">
-            <?php require_once('menu.php');?>
+            <?php require_once('menu.php'); ?>
         </div>
         <div class="col-md-10" style="padding-top: 20px;">   
-            <div class="row" style="padding-top: 20px;">     
-                <table id="concat" class="display" style="width:100%">
+            <div class="row table-responsive" style="padding-top: 20px;">     
+                <table id="concat" class="display table" style="width:100%">
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -26,14 +26,14 @@ $result=mysqli_query($conn,$sql);
                         </tr>
                     </thead>
                     <tbody>
-                        <?php while($rec = mysqli_fetch_array($result)) {?>
-                        <tr>
-                            <td><?php echo $rec['name'];?></td>
-                            <td><?php echo $rec['email'];?></td>
-                            <td><?php echo $rec['subject'];?></td>
-                            <td><?php echo $rec['message'];?></td>
-                        </tr>
-                    <?php }?>
+                        <?php while ($rec = mysqli_fetch_array($result)) { ?>
+                            <tr>
+                                <td><?php echo $rec['name']; ?></td>
+                                <td><?php echo $rec['email']; ?></td>
+                                <td><?php echo $rec['subject']; ?></td>
+                                <td><?php echo $rec['message']; ?></td>
+                            </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
