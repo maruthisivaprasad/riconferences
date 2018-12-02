@@ -87,7 +87,10 @@ if (isset($_POST) && !empty($_POST)) {
         mysqli_query($conn, $sql);
     }
 
-    $sql = "update events set title='" . $_POST['title'] . "', date='" . $_POST['date'] . "', enddate='" . $enddate . "', location='" . $_POST['location'] . "', theme='" . $_POST['theme'] . "', description='" . htmlentities(addslashes($_POST['description'])) . "', key_topics='" . htmlentities(addslashes($_POST['key_topics'])) . "' where eventid=" . $eventid;
+    $sql = "update events set title='" . $_POST['title'] . "', slug='" . $_POST['slug'] . "', "
+            . "date='" . $_POST['date'] . "', enddate='" . $enddate . "', location='" . $_POST['location'] . "', "
+            . "theme='" . $_POST['theme'] . "', description='" . htmlentities(addslashes($_POST['description'])) . "',"
+            . " key_topics='" . htmlentities(addslashes($_POST['key_topics'])) . "' where eventid=" . $eventid;
     mysqli_query($conn, $sql);
     header("location: events.php");
 }
@@ -125,7 +128,16 @@ require_once('head.php');
                             <input type="text" class="form-control" name="title" id="title" value="<?php echo $result->title; ?>" required>
                         </div>
                     </div>
-
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="slug">Slug: <span class="required">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="slug" id="slug" value="<?php echo $result->slug; ?>" required>
+                        </div>
+                    </div>
+                    
                     <div class="row" style="padding-top: 10px;">
                         <div class="col-md-3">
                             <label for="date">Date: <span class="required">*</span></label>

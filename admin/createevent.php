@@ -3,7 +3,11 @@ require_once('../config.php');
 if (isset($_POST) && !empty($_POST)) {
     $enddate1 = explode("/", $_POST['end_date']);
     $enddate = $enddate1[2] . "-" . $enddate1[0] . "-" . $enddate1[1];
-    $sql = "insert into events (title, date, enddate, location, theme, description, key_topics) values ('" . $_POST['title'] . "', '" . $_POST['date'] . "', '" . $enddate . "', '" . $_POST['location'] . "', '" . $_POST['theme'] . "', '" . htmlentities(addslashes($_POST['description'])) . "', '" . htmlentities(addslashes($_POST['key_topics'])) . "')";
+    $sql = "insert into events (title, slug, date, enddate, location, theme, description, key_topics) values "
+            . "('" . $_POST['title'] . "', '" . $_POST['slug'] . "', '" . $_POST['date'] . "', '" . $enddate . "', "
+            . "'" . $_POST['location'] . "', '" . $_POST['theme'] . "', "
+            . "'" . htmlentities(addslashes($_POST['description'])) . "', "
+            . "'" . htmlentities(addslashes($_POST['key_topics'])) . "')";
     mysqli_query($conn, $sql);
     $eventid = $conn->insert_id;
     $sliderfile = $brochurefile = $backgroundfile = $thumbfile = '';
@@ -106,7 +110,16 @@ require_once('head.php');
                             <input type="text" class="form-control" name="title" id="title" value="" required>
                         </div>
                     </div>
-
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="slug">Slug: <span class="required">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="slug" id="slug" value="" required>
+                        </div>
+                    </div>
+                    
                     <div class="row" style="padding-top: 10px;">
                         <div class="col-md-3">
                             <label for="date">Date: <span class="required">*</span></label>

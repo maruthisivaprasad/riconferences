@@ -23,6 +23,7 @@ $result = mysqli_query($conn, $sql);
                     <thead>
                         <tr>
                             <th>Title</th>
+                            <th>Slug</th>
                             <th>Date</th>
                             <th>End Date</th>
                             <th>Location</th>
@@ -34,6 +35,7 @@ $result = mysqli_query($conn, $sql);
                         <?php while ($rec = mysqli_fetch_array($result)) { ?>
                             <tr>
                                 <td><?php echo $rec['title']; ?></td>
+                                <td><?php echo $rec['slug']; ?></td>
                                 <td><?php echo $rec['date']; ?></td>
                                 <td><?php echo $rec['enddate']; ?></td>
                                 <td><?php echo $rec['location']; ?></td>
