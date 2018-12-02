@@ -131,7 +131,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             $res = mysqli_query($conn,$sql);
                             while($result = mysqli_fetch_array($res)) {
                         ?>
-                        <li><a href="conferenceinfo.php?id=<?php echo $result['eventid'];?>"><?php echo $result['title'];?></a></li>
+                        <li><a href="<?php echo $result['slug'];?>"><?php echo $result['title'];?></a></li>
                     <?php }?>
                   </ul>
                     </li>

@@ -1,9 +1,9 @@
 <?php include_once 'header.php';
 require_once('config.php');
-$sql = "select * from events where eventid=".$_GET['id'];
-$eventid = $_GET['id'];
+$sql = "select * from events where slug='".$_GET['id']."'";
 $res = mysqli_query($conn,$sql);
 $result = mysqli_fetch_object($res);
+$eventid = $result->eventid;
 if(!empty($result->background_image))
    $banner = "documents/".$result->eventid."/".$result->background_image;
 else
@@ -14,7 +14,7 @@ else
     background: url('<?php echo $banner;?>') no-repeat center !important;
  }
 </style>
-    <title>Dental Conference | RI Conferences</title>
+    <title><?php echo $result->title;?> | RI Conferences</title>
            <div class="jumbotron jumbotron-fluid bg-dark conference-banner-dental">
             <div class="overlay">
                <div class="container clearfix text-center">
