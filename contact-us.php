@@ -37,6 +37,7 @@
                             <div class="col-sm-6 col-12"><input type="email" placeholder="Email Address*" name="email" required=""></div>
                         </div>
                         <input type="text" placeholder="Subject*" name="sub">
+                        <input type="hidden" name="redirect" value="contact">
                         <textarea placeholder="Your Message" name="message"></textarea>
                         <input type="submit" value="Send Message">
                     </form>

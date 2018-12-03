@@ -300,11 +300,11 @@
 			=====================================================
 			-->
 			<div class="consultation-form bg-white">
-                            <?php echo ($_SESSION['message']) ? $_SESSION['message'] : '';?>
-				<div class="container">
+                            	<div class="container">
 					<div class="row">
 						<div class="col-lg-8 col-12">
 							<div class="form-wrapper">
+                                                            <?php echo ($_SESSION['message']) ? $_SESSION['message'] : '';?>
 								<div class="theme-title">
 									<h2>Contact us more information</h2>
 								</div> <!-- /.theme-title -->
@@ -315,6 +315,7 @@
 										</div>
 										<div class="col-md-6 order-md-first">
                                                                                     <input type="text" placeholder="Username*" name="name" required="">
+                                                                                    <input type="hidden" name="redirect" value="index">
 											<input type="email" placeholder="Email*" name="email" required="">
 											<select class="form-control" id="exampleSelect1" name="sub">
 										      <option>About conferences</option>
