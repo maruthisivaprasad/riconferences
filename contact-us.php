@@ -33,12 +33,12 @@
                 <div class="contact-us-form">
                     <form action="sendemail.php" method="post" class="form-validation form-styl-two" autocomplete="off">
                         <div class="row">
-                            <div class="col-sm-6 col-12"><input type="text" placeholder="Your Name*" name="name"></div>
-                            <div class="col-sm-6 col-12"><input type="email" placeholder="Email Address*" name="email"></div>
+                            <div class="col-sm-6 col-12"><input type="text" placeholder="Your Name*" name="name" required=""></div>
+                            <div class="col-sm-6 col-12"><input type="email" placeholder="Email Address*" name="email" required=""></div>
                         </div>
                         <input type="text" placeholder="Subject*" name="sub">
                         <textarea placeholder="Your Message" name="message"></textarea>
-                        <input type="submit" value="SEnd Message">
+                        <input type="submit" value="Send Message">
                     </form>
                 </div> <!-- /.contact-us-form -->
             </div> <!-- /.col- -->

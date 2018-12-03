@@ -1,5 +1,15 @@
 <?php
 require_once('../config.php');
+function slugify($string) {
+    // Make the whole string lowercase
+    $slug = strtolower($slug);
+    // Replace utf-8 characters with 7-bit ASCII equivelants
+    $slug = iconv("utf-8", "ascii//TRANSLIT", $input);
+    // Replace any number of non-alphanumeric characters with hyphens
+    $slug = preg_replace("/[^a-z0-9-]+/", "-", $string);
+    // Remove any hyphens from the beginning & end of the string
+    return trim($slug, "-");
+}
 $sql = "select * from events where eventid=" . $_GET['id'];
 $eventid = $_GET['id'];
 $res = mysqli_query($conn, $sql);
@@ -87,7 +97,7 @@ if (isset($_POST) && !empty($_POST)) {
         mysqli_query($conn, $sql);
     }
 
-    $sql = "update events set title='" . $_POST['title'] . "', slug='" . $_POST['slug'] . "', "
+    $sql = "update events set title='" . $_POST['title'] . "', slug='" . slugify($_POST['slug']) . "', "
             . "date='" . $_POST['date'] . "', enddate='" . $enddate . "', location='" . $_POST['location'] . "', "
             . "theme='" . $_POST['theme'] . "', description='" . htmlentities(addslashes($_POST['description'])) . "',"
             . " key_topics='" . htmlentities(addslashes($_POST['key_topics'])) . "' where eventid=" . $eventid;

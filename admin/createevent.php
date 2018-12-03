@@ -1,10 +1,20 @@
 <?php
 require_once('../config.php');
+function slugify($string) {
+    // Make the whole string lowercase
+    $slug = strtolower($slug);
+    // Replace utf-8 characters with 7-bit ASCII equivelants
+    $slug = iconv("utf-8", "ascii//TRANSLIT", $input);
+    // Replace any number of non-alphanumeric characters with hyphens
+    $slug = preg_replace("/[^a-z0-9-]+/", "-", $string);
+    // Remove any hyphens from the beginning & end of the string
+    return trim($slug, "-");
+}
 if (isset($_POST) && !empty($_POST)) {
     $enddate1 = explode("/", $_POST['end_date']);
     $enddate = $enddate1[2] . "-" . $enddate1[0] . "-" . $enddate1[1];
     $sql = "insert into events (title, slug, date, enddate, location, theme, description, key_topics) values "
-            . "('" . $_POST['title'] . "', '" . $_POST['slug'] . "', '" . $_POST['date'] . "', '" . $enddate . "', "
+            . "('" . $_POST['title'] . "', '" . slugify($_POST['slug']) . "', '" . $_POST['date'] . "', '" . $enddate . "', "
             . "'" . $_POST['location'] . "', '" . $_POST['theme'] . "', "
             . "'" . htmlentities(addslashes($_POST['description'])) . "', "
             . "'" . htmlentities(addslashes($_POST['key_topics'])) . "')";

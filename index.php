@@ -300,6 +300,7 @@
 			=====================================================
 			-->
 			<div class="consultation-form bg-white">
+                            <?php echo ($_SESSION['message']) ? $_SESSION['message'] : '';?>
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-8 col-12">
@@ -307,21 +308,21 @@
 								<div class="theme-title">
 									<h2>Contact us more information</h2>
 								</div> <!-- /.theme-title -->
-								<form action="#">
+								<form action="sendemail.php" method="post" class="form-validation form-styl-two" autocomplete="off">
 									<div class="row">
 										<div class="col-md-6 order-md-last">
-											<textarea placeholder="Message*"></textarea>
+											<textarea name="message" placeholder="Message*"></textarea>
 										</div>
 										<div class="col-md-6 order-md-first">
-											<input type="text" placeholder="Username*">
-											<input type="email" placeholder="Email*">
-											<select class="form-control" id="exampleSelect1">
+                                                                                    <input type="text" placeholder="Username*" name="name" required="">
+											<input type="email" placeholder="Email*" name="email" required="">
+											<select class="form-control" id="exampleSelect1" name="sub">
 										      <option>About conferences</option>
 										      <option>About Speakers</option>
 										      <option>Discounts</option>
 										      <option>Others</option>
 										    </select>
-										    <button class="form-button">Get Free Consultation</button>
+                                                                                        <input type="submit" value="Get Free Consultation">
 										</div>
 									</div>
 								</form>
