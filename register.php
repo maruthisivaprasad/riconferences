@@ -11,7 +11,7 @@ $eventid = $result->slug;
         <div class="container clearfix">
             <h2>Register</h2>
             <ul>
-                <li><a href="index.php">Home</a></li>
+                <li><a href="<?php echo $urlpath;?>/index.php">Home</a></li>
                 <li>/</li>
                 <li>Register</li>
             </ul>

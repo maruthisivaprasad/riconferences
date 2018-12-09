@@ -164,7 +164,7 @@
                             $res = mysqli_query($conn,$sql);
                             while($result = mysqli_fetch_array($res)) {
                         ?>
-                        <li><a href="<?php echo $result['slug'];?>"><?php echo $result['title'];?></a></li>
+                        <li><a href="<?php echo $result['slug'];?>.php"><?php echo $result['title'];?></a></li>
                     <?php }?>
 									</ul>
 					    	    </li>
