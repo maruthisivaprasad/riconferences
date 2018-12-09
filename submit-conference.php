@@ -1,9 +1,9 @@
 <?php include_once 'header.php';
 require_once('config.php');
-$sql = "select * from events where eventid=".$_GET['id'];
-$eventid = $_GET['id'];
+$sql = "select * from events where slug='".$_GET['id']."'";
 $res = mysqli_query($conn,$sql);
 $result = mysqli_fetch_object($res);
+$eventid = $result->eventid;
 ?>
 <title>Submit Abstract | RI Conferences</title>
    <div class="jumbotron jumbotron-fluid bg-dark conference-banner">
@@ -28,7 +28,7 @@ $result = mysqli_fetch_object($res);
             <div class="container">
                <div class="row">
                   <div class="col-xl-9 col-lg-8 col-12">
-                    <form action="submitcon.php" method="post" enctype="multipart/form-data">
+                    <form action="<?php echo $urlpath;?>/submitcon.php" method="post" enctype="multipart/form-data">
                        <div class="form-group">
                           <label for="exampleInputname">Name</label>
                           <input type="text" class="form-control" name="user_name" id="exampleInputname" placeholder="Enter name" required="">
@@ -128,33 +128,33 @@ $result = mysqli_fetch_object($res);
          <!-- Optional JavaScript _____________________________  -->
          <!-- jQuery first, then Popper.js, then Bootstrap JS -->
          <!-- jQuery -->
-         <script src="vendor/jquery.2.2.3.min.js"></script>
-         <script src="js/jquery.min.js"></script>
+         <script src="<?php echo $urlpath;?>/vendor/jquery.2.2.3.min.js"></script>
+         <script src="<?php echo $urlpath;?>/js/jquery.min.js"></script>
          <!-- Popper js -->
-         <script src="vendor/popper.js/popper.min.js"></script>
+         <script src="<?php echo $urlpath;?>/vendor/popper.js/popper.min.js"></script>
          <!-- Bootstrap JS -->
-         <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+         <script src="<?php echo $urlpath;?>/vendor/bootstrap/js/bootstrap.min.js"></script>
          <!-- Camera Slider -->
-         <script src='vendor/Camera-master/scripts/jquery.mobile.customized.min.js'></script>
-         <script src='vendor/Camera-master/scripts/jquery.easing.1.3.js'></script>
-         <script src='vendor/Camera-master/scripts/camera.min.js'></script>
+         <script src='<?php echo $urlpath;?>/vendor/Camera-master/scripts/jquery.mobile.customized.min.js'></script>
+         <script src='<?php echo $urlpath;?>/vendor/Camera-master/scripts/jquery.easing.1.3.js'></script>
+         <script src='<?php echo $urlpath;?>/vendor/Camera-master/scripts/camera.min.js'></script>
          <!-- Language Stitcher -->
-         <script src="vendor/language-switcher/jquery.polyglot.language.switcher.js"></script>
+         <script src="<?php echo $urlpath;?>/vendor/language-switcher/jquery.polyglot.language.switcher.js"></script>
          <!-- Mega menu  -->
-         <script src="vendor/bootstrap-mega-menu/js/menu.js"></script>
+         <script src="<?php echo $urlpath;?>/vendor/bootstrap-mega-menu/js/menu.js"></script>
          <!-- WOW js -->
-         <script src="vendor/WOW-master/dist/wow.min.js"></script>
+         <script src="<?php echo $urlpath;?>/vendor/WOW-master/dist/wow.min.js"></script>
          <!-- owl.carousel -->
-         <script src="vendor/owl-carousel/owl.carousel.min.js"></script>
+         <script src="<?php echo $urlpath;?>/vendor/owl-carousel/owl.carousel.min.js"></script>
          <!-- js count to -->
-         <script src="vendor/jquery.appear.js"></script>
-         <script src="vendor/jquery.countTo.js"></script>
+         <script src="<?php echo $urlpath;?>/vendor/jquery.appear.js"></script>
+         <script src="<?php echo $urlpath;?>/vendor/jquery.countTo.js"></script>
          <!-- Fancybox -->
-         <script src="vendor/fancybox/dist/jquery.fancybox.min.js"></script>
-         <script src="js/hs.core.js"></script>
-         <script src="js/hs.sticky-block.js"></script>
+         <script src="<?php echo $urlpath;?>/vendor/fancybox/dist/jquery.fancybox.min.js"></script>
+         <script src="<?php echo $urlpath;?>/js/hs.core.js"></script>
+         <script src="<?php echo $urlpath;?>/js/hs.sticky-block.js"></script>
          <!-- Theme js -->
-         <script src="js/theme.js"></script>
+         <script src="<?php echo $urlpath;?>/js/theme.js"></script>
          <script type="text/javascript">
             $(window).on('load', function () {
                    // initialization of sticky blocks

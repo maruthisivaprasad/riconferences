@@ -8,7 +8,7 @@
                <div class="content-wrapper">
                   <div class="footer-bottom-wrapper row">
                      <div class="col-lg-3 col-sm-6 col-12 footer-logo">
-                        <div class="logo"><a href="index.html"><img src="images/logo/logo.png" alt="Logo"></a></div>
+                        <div class="logo"><a href="<?php echo $urlpath;?>/index.html"><img src="<?php echo $urlpath;?>/images/logo/logo.png" alt="Logo"></a></div>
                         <a href="tel:+1 9173833144" class="phone-number">+1 9173833144</a>
                      </div>
                      <div class="col-lg-6 col-sm-6 col-12 footer-list">
@@ -23,9 +23,9 @@
                      <div class="col-lg-3 col-sm-6 col-12 footer-list-about">
                         <h4>About Us</h4>
                         <ul>
-                           <li><p><a href="about-us">About us</a></p></li>
-                           <li><p><a href="contact-us">Contact us</a></p></li>
-                           <li><p><a href="privacy-policy">Privacy Policy</a></p></li>
+                           <li><p><a href="<?php echo $urlpath;?>/about-us">About us</a></p></li>
+                           <li><p><a href="<?php echo $urlpath;?>/contact-us">Contact us</a></p></li>
+                           <li><p><a href="<?php echo $urlpath;?>/privacy-policy">Privacy Policy</a></p></li>
                         </ul>
                      </div>
                   </div>

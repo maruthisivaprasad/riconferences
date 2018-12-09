@@ -1,9 +1,9 @@
 <?php include_once 'header.php';
 require_once('config.php');
-$sql = "select * from events where eventid='".$_GET['id']."'";
+$sql = "select * from events where slug='".$_GET['id']."'";
 $res = mysqli_query($conn,$sql);
 $result = mysqli_fetch_object($res);
-$eventid = $result->eventid;
+$eventid = $result->slug;
 ?>
 <title>Register | RI Conferences</title>
 <div class="inner-banner">
@@ -26,9 +26,9 @@ $eventid = $result->eventid;
                     <input type="hidden" name="business" value="<?php echo $paypalID; ?>">
                     <input type="hidden" name="cmd" value="_xclick">
                     <input type="hidden" name="currency_code" value="USD">
-                    <input type='hidden' name='cancel_return' value='http://localhost/riconferences/index.php'>
-                    <input type='hidden' name='return' value='http://localhost/riconferences/checkout.php'>
-                    <input type='hidden' name='notify_url' value='http://localhost/riconferences/checkout.php'>
+                    <input type='hidden' name='cancel_return' value='<?php echo $urlpath;?>/index.php'>
+                    <input type='hidden' name='return' value='<?php echo $urlpath;?>/checkout.php'>
+                    <input type='hidden' name='notify_url' value='<?php echo $urlpath;?>/checkout.php'>
                     <select name="title" class="form-control" placeholder="Title" required data-validation-required-message="Please select your title.">
                       <option value="" selected>Select Titles</option>
                       <option value="Dr.">Dr.</option>
@@ -403,27 +403,27 @@ $eventid = $result->eventid;
                 </div> </br><!-- /.about-us-section -->
             <?php include_once 'footer.php'; ?>
             <!-- jQuery -->
-            <script src="vendor/jquery.2.2.3.min.js"></script>
+            <script src="<?php echo $urlpath;?>/vendor/jquery.2.2.3.min.js"></script>
             <!-- Popper js -->
-            <script src="vendor/popper.js/popper.min.js"></script>
+            <script src="<?php echo $urlpath;?>/vendor/popper.js/popper.min.js"></script>
             <!-- Bootstrap JS -->
-            <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+            <script src="<?php echo $urlpath;?>/vendor/bootstrap/js/bootstrap.min.js"></script>
             <!-- Language Stitcher -->
-            <script src="vendor/language-switcher/jquery.polyglot.language.switcher.js"></script>
+            <script src="<?php echo $urlpath;?>/vendor/language-switcher/jquery.polyglot.language.switcher.js"></script>
             <!-- Mega menu  -->
-            <script src="vendor/bootstrap-mega-menu/js/menu.js"></script>
+            <script src="<?php echo $urlpath;?>/vendor/bootstrap-mega-menu/js/menu.js"></script>
             <!-- WOW js -->
-            <script src="vendor/WOW-master/dist/wow.min.js"></script>
+            <script src="<?php echo $urlpath;?>/vendor/WOW-master/dist/wow.min.js"></script>
             <!-- owl.carousel -->
-            <script src="vendor/owl-carousel/owl.carousel.min.js"></script>
+            <script src="<?php echo $urlpath;?>/vendor/owl-carousel/owl.carousel.min.js"></script>
             <!-- js count to -->
-            <script src="vendor/jquery.appear.js"></script>
-            <script src="vendor/jquery.countTo.js"></script>
+            <script src="<?php echo $urlpath;?>/vendor/jquery.appear.js"></script>
+            <script src="<?php echo $urlpath;?>/vendor/jquery.countTo.js"></script>
             <!-- Fancybox -->
-            <script src="vendor/fancybox/dist/jquery.fancybox.min.js"></script>
+            <script src="<?php echo $urlpath;?>/vendor/fancybox/dist/jquery.fancybox.min.js"></script>
 
             <!-- Theme js -->
-            <script src="js/theme.js"></script>
+            <script src="<?php echo $urlpath;?>/js/theme.js"></script>
         </div> <!-- /.main-page-wrapper -->
     </body>
 </html>

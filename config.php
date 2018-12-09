@@ -8,6 +8,7 @@ $dbname = "thecliof_usersdata";
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
 $path = 'C:/xampp/htdocs/riconferences';
+$urlpath = 'http://localhost/riconferences';
 $paypalURL = 'https://www.sandbox.paypal.com/cgi-bin/webscr'; //Test PayPal API URL
 $paypalID = 'vkmsivaprasad@gmail.com'; //Business Email
 // Check connection

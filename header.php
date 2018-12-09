@@ -11,16 +11,16 @@
 
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="56x56" href="images/fav-icon/icon.png">
+    <link rel="icon" type="image/png" sizes="56x56" href="<?php echo $urlpath;?>/images/fav-icon/icon.png">
 
 
     <!-- Main style sheet -->
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/custom.css">
-    <link rel="stylesheet" type="text/css" href="css/animate.css">
-    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo $urlpath;?>/css/style.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo $urlpath;?>/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo $urlpath;?>/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo $urlpath;?>/vendor/bootstrap/css/bootstrap.min.css">
     <!-- responsive style sheet -->
-    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo $urlpath;?>/css/responsive.css">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -114,7 +114,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="main-menu-wrapper clearfix">
           <div class="container clearfix">
             <!-- Logo -->
-            <div class="logo float-left"><a href="index.php"><img src="images/logo/logo.png" alt="Logo"></a></div>
+            <div class="logo float-left"><a href="<?php echo $urlpath;?>/index.php"><img src="<?php echo $urlpath;?>/images/logo/logo.png" alt="Logo"></a></div>
 
             <!-- ============================ Theme Menu ========================= -->
             <nav class="navbar-expand-lg float-right navbar-light border-bottom" id="mega-menu-wrapper">
@@ -123,7 +123,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </button>
                 <div class="collapse navbar-collapse clearfix" id="navbarNav">
                   <ul class="navbar-nav nav">
-                    <li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="<?php echo $urlpath;?>/index.php">Home</a></li>
                     <li class="nav-item dropdown-holder">
                       <a class="nav-link" href="#">Conferences</a>
                       <ul class="sub-menu">
@@ -131,14 +131,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             $res = mysqli_query($conn,$sql);
                             while($result = mysqli_fetch_array($res)) {
                         ?>
-                        <li><a href="<?php echo $result['slug'];?>"><?php echo $result['title'];?></a></li>
+                        <li><a href="<?php echo $urlpath;?>/<?php echo $result['slug'];?>"><?php echo $result['title'];?></a></li>
                     <?php }?>
                   </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="about-us.php">About Us</a>
+                    <li class="nav-item"><a class="nav-link" href="<?php echo $urlpath;?>/about-us.php">About Us</a>
                     </li>
                     <li class="nav-item dot-fix mr-0">
-                      <a class="nav-link" href="contact-us.php">Contact us</a>
+                      <a class="nav-link" href="<?php echo $urlpath;?>/contact-us.php">Contact us</a>
                     </li>
                   </ul>
                 </div>
