@@ -45,6 +45,98 @@ $result = mysqli_fetch_object($res);
                 <div class="col-md-8"><?php echo $result->key_topics; ?></div>
             </div>
             <hr>
+            
+            <div class="row">
+                <div class="col-md-2">Speaker Early Academic</div>
+                <div class="col-md-8"><?php echo $result->speaker_early_academic; ?></div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-2">Speaker Early Business</div>
+                <div class="col-md-8"><?php echo $result->speaker_early_business; ?></div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-2">Speaker Regular Academic</div>
+                <div class="col-md-8"><?php echo $result->speaker_regular_academic; ?></div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-2">Speaker Regular Business</div>
+                <div class="col-md-8"><?php echo $result->speaker_regular_business; ?></div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-2">Speaker OnSpot Academic</div>
+                <div class="col-md-8"><?php echo $result->speaker_onspot_academic; ?></div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-2">Speaker OnSpot Business</div>
+                <div class="col-md-8"><?php echo $result->speaker_onspot_business; ?></div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-2">Student Early Academic</div>
+                <div class="col-md-8"><?php echo $result->student_early_academic; ?></div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-2">Student Early Business</div>
+                <div class="col-md-8"><?php echo $result->student_early_business; ?></div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-2">Student Regular Academic</div>
+                <div class="col-md-8"><?php echo $result->student_regular_academic; ?></div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-2">Student Regular Business</div>
+                <div class="col-md-8"><?php echo $result->student_regular_business; ?></div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-2">Student OnSpot Academic</div>
+                <div class="col-md-8"><?php echo $result->student_onspot_academic; ?></div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-2">Student OnSpot Business</div>
+                <div class="col-md-8"><?php echo $result->student_onspot_business; ?></div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-2">Delegate Early Academic</div>
+                <div class="col-md-8"><?php echo $result->delegate_early_academic; ?></div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-2">Delegate Early Business</div>
+                <div class="col-md-8"><?php echo $result->delegate_early_business; ?></div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-2">Delegate Regular Academic</div>
+                <div class="col-md-8"><?php echo $result->delegate_regular_academic; ?></div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-2">Delegate Regular Business</div>
+                <div class="col-md-8"><?php echo $result->delegate_regular_business; ?></div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-2">Delegate Onspot Academic</div>
+                <div class="col-md-8"><?php echo $result->delegate_onspot_academic; ?></div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-2">Delegate Onspot Business</div>
+                <div class="col-md-8"><?php echo $result->delegate_onspot_business; ?></div>
+            </div>
+            <hr>
+            
             <div class="row">
                 <div class="col-md-2">Brochure</div>
                 <div class="col-md-8"><?php if (!empty($result->brochure)) { ?><li class="mt-2"><a href="../documents/<?php echo $result->eventid; ?>/<?php echo $result->brochure; ?>" target="_blank"><button class=" btn btn-sm btn-success"> Download Brochure</button></a><?php } ?></div>

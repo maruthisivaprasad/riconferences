@@ -1,6 +1,11 @@
-<?php include_once 'header.php';
+<?php 
+if($_SERVER['REQUEST_URI'] == '/riconferences/')
+    header("location: index.php");
+if($_SERVER['REQUEST_URI'] == '/riconferences/admin/?id=admin')
+    header("location: index.php");
+include_once 'header.php';
 require_once('config.php');
-$sql = "select * from events where slug='".$_GET['id']."'";
+$sql = "select * from events where eventid='".$_GET['id']."'";
 $res = mysqli_query($conn,$sql);
 $result = mysqli_fetch_object($res);
 $eventid = $result->eventid;
@@ -26,7 +31,7 @@ else
                      <ul class="list-inline">
                         <!-- <li class="mt-2"><a href="#team"><button class="btn btn-sm btn-primary"> Organizing Committee</button></a></li> -->
                         <li class="mt-2"><a href="submit-conference.php?id=<?php echo $result->eventid;?>"><button class=" btn btn-sm btn-danger"> Submit Abstract </button></a></li>
-                        <li class="mt-2 g-mx-5"><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SBH8A3TJMFEW4"><button class="btn btn-lg btn-warning">Register Now  @99</button></a></li>
+                        <li class="mt-2 g-mx-5"><a href="register.php?id=<?php echo $result->eventid;?>"><button class="btn btn-lg btn-warning">Register Now  @99</button></a></li>
                         <?php if(!empty($result->brochure)) {?><li class="mt-2"><a href="documents/<?php echo $result->eventid;?>/<?php echo $result->brochure;?>" target="_blank"><button class=" btn btn-sm btn-success"> Download Brochure</button></a></li><?php }?>
                      </ul>
                   </div>

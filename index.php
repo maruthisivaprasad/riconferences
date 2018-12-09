@@ -304,7 +304,7 @@
 					<div class="row">
 						<div class="col-lg-8 col-12">
 							<div class="form-wrapper">
-                                                            <?php echo ($_SESSION['message']) ? $_SESSION['message'] : '';?>
+                                                            <?php if(isset($_SESSION['message']) && !empty($_SESSION['message'])) echo $_SESSION['message'];?>
 								<div class="theme-title">
 									<h2>Contact us more information</h2>
 								</div> <!-- /.theme-title -->

@@ -1,13 +1,16 @@
 <div class="sidenav tab">
     <a href="events.php" <?php if (strpos($_SERVER['REQUEST_URI'], "events.php") > -1 || strpos($_SERVER['REQUEST_URI'], "editevent.php") > -1 || strpos($_SERVER['REQUEST_URI'], "createevent.php") > -1 || strpos($_SERVER['REQUEST_URI'], "viewevent.php") > -1) {
     echo "class = 'active'";
-} ?> >Events</a>
+    } ?> >Events</a>
     <a href="contacts.php" <?php if (strpos($_SERVER['REQUEST_URI'], "contacts.php") > -1) {
     echo "class = 'active'";
-} ?>>Contacts</a>
+    } ?>>Contacts</a>
     <a href="conferance.php" <?php if (strpos($_SERVER['REQUEST_URI'], "conferance.php") > -1) {
     echo "class = 'active'";
-} ?>>Conferance</a>
-	<a href="logout.php">Logout</a>
+    } ?>>Conference</a>
+    <a href="order.php" <?php if (strpos($_SERVER['REQUEST_URI'], "order.php") > -1) {
+    echo "class = 'active'";
+    } ?>>Order History</a>
+    <a href="logout.php">Logout</a>
 </div>
 

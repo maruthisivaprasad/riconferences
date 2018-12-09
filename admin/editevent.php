@@ -2,11 +2,11 @@
 require_once('../config.php');
 function slugify($string) {
     // Make the whole string lowercase
-    $slug = strtolower($slug);
+    $slug = strtolower($string);
     // Replace utf-8 characters with 7-bit ASCII equivelants
-    $slug = iconv("utf-8", "ascii//TRANSLIT", $input);
+    $slug = iconv("utf-8", "ascii//TRANSLIT", $slug);
     // Replace any number of non-alphanumeric characters with hyphens
-    $slug = preg_replace("/[^a-z0-9-]+/", "-", $string);
+    $slug = preg_replace("/[^a-z0-9-]+/", "-", $slug);
     // Remove any hyphens from the beginning & end of the string
     return trim($slug, "-");
 }
@@ -100,7 +100,17 @@ if (isset($_POST) && !empty($_POST)) {
     $sql = "update events set title='" . $_POST['title'] . "', slug='" . slugify($_POST['slug']) . "', "
             . "date='" . $_POST['date'] . "', enddate='" . $enddate . "', location='" . $_POST['location'] . "', "
             . "theme='" . $_POST['theme'] . "', description='" . htmlentities(addslashes($_POST['description'])) . "',"
-            . " key_topics='" . htmlentities(addslashes($_POST['key_topics'])) . "' where eventid=" . $eventid;
+            . " key_topics='" . htmlentities(addslashes($_POST['key_topics'])) . "', "
+            . "speaker_early_academic='".$_POST['speaker_early_academic']."', speaker_early_business='".$_POST['speaker_early_business']."', "
+            . "speaker_regular_academic='".$_POST['speaker_regular_academic']."', speaker_regular_business='".$_POST['speaker_regular_business']."', "
+            . "speaker_onspot_academic='".$_POST['speaker_onspot_academic']."', speaker_onspot_business='".$_POST['speaker_onspot_business']."', "
+            . "student_early_academic='".$_POST['student_early_academic']."', student_early_business='".$_POST['student_early_business']."', "
+            . "student_regular_academic='".$_POST['student_regular_academic']."', student_regular_business='".$_POST['student_regular_business']."', "
+            . "student_onspot_academic='".$_POST['student_onspot_academic']."', student_onspot_business='".$_POST['student_onspot_business']."', "
+            . "delegate_early_academic='".$_POST['delegate_early_academic']."', delegate_early_business='".$_POST['delegate_early_business']."', "
+            . "delegate_regular_academic='".$_POST['delegate_regular_academic']."', delegate_regular_business='".$_POST['delegate_regular_business']."', "
+            . "delegate_onspot_academic='".$_POST['delegate_onspot_academic']."', delegate_onspot_business='".$_POST['delegate_onspot_business']."' where eventid=" . $eventid;
+    //echo $sql;exit;
     mysqli_query($conn, $sql);
     header("location: events.php");
 }
@@ -243,6 +253,169 @@ require_once('head.php');
                             </script>
                         </div>
                     </div>
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="speaker_early_academic">Speaker Early Academic: <span class="required">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="speaker_early_academic" id="speaker_early_academic" value="" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="speaker_early_business">Speaker Early Business: <span class="required">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="speaker_early_business" id="speaker_early_business" value="" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="speaker_regular_academic">Speaker Regular Academic: <span class="required">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="speaker_regular_academic" id="speaker_regular_academic" value="" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="speaker_regular_business">Speaker Regular Business: <span class="required">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="speaker_regular_business" id="speaker_regular_business" value="" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="speaker_onspot_academic">Speaker OnSpot Academic: <span class="required">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="speaker_onspot_academic" id="speaker_onspot_academic" value="" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="speaker_onspot_business">Speaker OnSpot Business: <span class="required">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="speaker_onspot_business" id="speaker_onspot_business" value="" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="student_early_academic">Student Early Academic: <span class="required">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="student_early_academic" id="student_early_academic" value="" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="student_early_business">Student Early Business: <span class="required">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="student_early_business" id="student_early_business" value="" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="student_regular_academic">Student Regular Academic: <span class="required">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="student_regular_academic" id="student_regular_academic" value="" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="student_regular_business">Student Regular Business: <span class="required">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="student_regular_business" id="student_regular_business" value="" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="student_onspot_academic">Student OnSpot Academic: <span class="required">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="student_onspot_academic" id="student_onspot_academic" value="" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="student_onspot_business">Student OnSpot Business: <span class="required">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="student_onspot_business" id="student_onspot_business" value="" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="delegate_early_academic">Delegate Early Academic: <span class="required">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="delegate_early_academic" id="delegate_early_academic" value="" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="delegate_early_business">Delegate Early Business: <span class="required">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="delegate_early_business" id="delegate_early_business" value="" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="delegate_regular_academic">Delegate Regular Academic: <span class="required">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="delegate_regular_academic" id="delegate_regular_academic" value="" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="delegate_regular_business">Delegate Regular Business: <span class="required">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="delegate_regular_business" id="delegate_regular_business" value="" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="delegate_onspot_academic">Delegate Onspot Academic: <span class="required">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="delegate_onspot_academic" id="delegate_onspot_academic" value="" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="delegate_onspot_business">Delegate Onspot Business: <span class="required">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="delegate_onspot_business" id="delegate_onspot_business" value="" required>
+                        </div>
+                    </div>
+                    
                     <div class="row" style="padding-top: 10px;">
                         <button class="btn btn-success" type="submit" style="font-size:14px;">Edit Event</button>
                     </div>

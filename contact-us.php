@@ -28,7 +28,7 @@
 <div class="contact-us">
     <div class="container">
         <div class="row" style="margin-bottom: 50px;">
-            <?php echo ($_SESSION['message']) ? $_SESSION['message'] : '';?>
+            <?php if(isset($_SESSION['message']) && !empty($_SESSION['message'])) echo $_SESSION['message'];?>
             <div class="col-lg-7 col-12">
                 <div class="contact-us-form">
                     <form action="sendemail.php" method="post" class="form-validation form-styl-two" autocomplete="off">
