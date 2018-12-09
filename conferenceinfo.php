@@ -1,11 +1,12 @@
 <?php 
+//echo "<pre>";print_r($_SERVER);exit;
 if($_SERVER['REQUEST_URI'] == '/riconferences/')
     header("location: index.php");
 if($_SERVER['REQUEST_URI'] == '/riconferences/admin/?id=admin')
     header("location: index.php");
 include_once 'header.php';
 require_once('config.php');
-$sql = "select * from events where eventid='".$_GET['id']."'";
+$sql = "select * from events where slug='".$_GET['id']."'";
 $res = mysqli_query($conn,$sql);
 $result = mysqli_fetch_object($res);
 $eventid = $result->eventid;

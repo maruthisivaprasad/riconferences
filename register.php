@@ -20,9 +20,15 @@ $eventid = $result->eventid;
 </div> <!-- /.inner-banner -->
 <div class="about-us-section">
     <div class="container">
-        <form action="checkout.php" method="post" name="form1" id="form1">
+        <form action="<?php echo $paypalURL; ?>" method="post" name="form1" id="form1">
             <div class="col-sm-6">
                 <div class="form-group">
+                    <input type="hidden" name="business" value="<?php echo $paypalID; ?>">
+                    <input type="hidden" name="cmd" value="_xclick">
+                    <input type="hidden" name="currency_code" value="USD">
+                    <input type='hidden' name='cancel_return' value='http://localhost/riconferences/cancel.php'>
+                    <input type='hidden' name='return' value='http://localhost/riconferences/checkout.php'>
+                    <input type='hidden' name='notify_url' value='http://localhost/riconferences/checkout.php'>
                     <select name="title" class="form-control" placeholder="Title" required data-validation-required-message="Please select your title.">
                       <option value="" selected>Select Titles</option>
                       <option value="Dr.">Dr.</option>
@@ -389,7 +395,9 @@ $eventid = $result->eventid;
                   </tr>
                 </tbody>
               </table>
-                <input type="submit" class="btn btn-common"  value="Register Now" name="submit">
+                <input type="image" name="submit" border="0"
+        src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" alt="PayPal - The safer, easier way to pay online">
+        <img alt="" border="0" width="1" height="1" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
             </form>  
                 </div> <!-- /.container -->
                 </div> </br><!-- /.about-us-section -->
