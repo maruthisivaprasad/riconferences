@@ -259,7 +259,7 @@ require_once('head.php');
                             <label for="speaker_early_academic">Speaker Early Academic: <span class="required">*</span></label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="speaker_early_academic" id="speaker_early_academic" value="" required>
+                            <input type="text" class="form-control" name="speaker_early_academic" id="speaker_early_academic" value="<?php echo $result->speaker_early_academic; ?>" required>
                         </div>
                     </div>
                     
@@ -268,7 +268,7 @@ require_once('head.php');
                             <label for="speaker_early_business">Speaker Early Business: <span class="required">*</span></label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="speaker_early_business" id="speaker_early_business" value="" required>
+                            <input type="text" class="form-control" name="speaker_early_business" id="speaker_early_business" value="<?php echo $result->speaker_early_business; ?>" required>
                         </div>
                     </div>
                     
@@ -277,7 +277,7 @@ require_once('head.php');
                             <label for="speaker_regular_academic">Speaker Regular Academic: <span class="required">*</span></label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="speaker_regular_academic" id="speaker_regular_academic" value="" required>
+                            <input type="text" class="form-control" name="speaker_regular_academic" id="speaker_regular_academic" value="<?php echo $result->speaker_regular_academic; ?>" required>
                         </div>
                     </div>
                     
@@ -286,7 +286,7 @@ require_once('head.php');
                             <label for="speaker_regular_business">Speaker Regular Business: <span class="required">*</span></label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="speaker_regular_business" id="speaker_regular_business" value="" required>
+                            <input type="text" class="form-control" name="speaker_regular_business" id="speaker_regular_business" value="<?php echo $result->speaker_regular_business; ?>" required>
                         </div>
                     </div>
                     
@@ -295,7 +295,7 @@ require_once('head.php');
                             <label for="speaker_onspot_academic">Speaker OnSpot Academic: <span class="required">*</span></label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="speaker_onspot_academic" id="speaker_onspot_academic" value="" required>
+                            <input type="text" class="form-control" name="speaker_onspot_academic" id="speaker_onspot_academic" value="<?php echo $result->speaker_onspot_academic; ?>" required>
                         </div>
                     </div>
                     
@@ -304,7 +304,7 @@ require_once('head.php');
                             <label for="speaker_onspot_business">Speaker OnSpot Business: <span class="required">*</span></label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="speaker_onspot_business" id="speaker_onspot_business" value="" required>
+                            <input type="text" class="form-control" name="speaker_onspot_business" id="speaker_onspot_business" value="<?php echo $result->speaker_onspot_business; ?>" required>
                         </div>
                     </div>
                     
@@ -313,7 +313,7 @@ require_once('head.php');
                             <label for="student_early_academic">Student Early Academic: <span class="required">*</span></label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="student_early_academic" id="student_early_academic" value="" required>
+                            <input type="text" class="form-control" name="student_early_academic" id="student_early_academic" value="<?php echo $result->student_early_academic; ?>" required>
                         </div>
                     </div>
                     
@@ -322,7 +322,7 @@ require_once('head.php');
                             <label for="student_early_business">Student Early Business: <span class="required">*</span></label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="student_early_business" id="student_early_business" value="" required>
+                            <input type="text" class="form-control" name="student_early_business" id="student_early_business" value="<?php echo $result->student_early_business; ?>" required>
                         </div>
                     </div>
                     
@@ -331,7 +331,7 @@ require_once('head.php');
                             <label for="student_regular_academic">Student Regular Academic: <span class="required">*</span></label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="student_regular_academic" id="student_regular_academic" value="" required>
+                            <input type="text" class="form-control" name="student_regular_academic" id="student_regular_academic" value="<?php echo $result->student_regular_academic; ?>" required>
                         </div>
                     </div>
                     
@@ -340,7 +340,7 @@ require_once('head.php');
                             <label for="student_regular_business">Student Regular Business: <span class="required">*</span></label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="student_regular_business" id="student_regular_business" value="" required>
+                            <input type="text" class="form-control" name="student_regular_business" id="student_regular_business" value="<?php echo $result->student_regular_business; ?>" required>
                         </div>
                     </div>
                     
@@ -349,7 +349,7 @@ require_once('head.php');
                             <label for="student_onspot_academic">Student OnSpot Academic: <span class="required">*</span></label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="student_onspot_academic" id="student_onspot_academic" value="" required>
+                            <input type="text" class="form-control" name="student_onspot_academic" id="student_onspot_academic" value="<?php echo $result->student_onspot_academic; ?>" required>
                         </div>
                     </div>
                     
@@ -358,7 +358,7 @@ require_once('head.php');
                             <label for="student_onspot_business">Student OnSpot Business: <span class="required">*</span></label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="student_onspot_business" id="student_onspot_business" value="" required>
+                            <input type="text" class="form-control" name="student_onspot_business" id="student_onspot_business" value="<?php echo $result->student_onspot_business; ?>" required>
                         </div>
                     </div>
                     
@@ -367,7 +367,7 @@ require_once('head.php');
                             <label for="delegate_early_academic">Delegate Early Academic: <span class="required">*</span></label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="delegate_early_academic" id="delegate_early_academic" value="" required>
+                            <input type="text" class="form-control" name="delegate_early_academic" id="delegate_early_academic" value="<?php echo $result->delegate_early_academic; ?>" required>
                         </div>
                     </div>
                     
@@ -376,7 +376,7 @@ require_once('head.php');
                             <label for="delegate_early_business">Delegate Early Business: <span class="required">*</span></label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="delegate_early_business" id="delegate_early_business" value="" required>
+                            <input type="text" class="form-control" name="delegate_early_business" id="delegate_early_business" value="<?php echo $result->delegate_early_business; ?>" required>
                         </div>
                     </div>
                     
@@ -385,7 +385,7 @@ require_once('head.php');
                             <label for="delegate_regular_academic">Delegate Regular Academic: <span class="required">*</span></label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="delegate_regular_academic" id="delegate_regular_academic" value="" required>
+                            <input type="text" class="form-control" name="delegate_regular_academic" id="delegate_regular_academic" value="<?php echo $result->delegate_regular_academic; ?>" required>
                         </div>
                     </div>
                     
@@ -394,7 +394,7 @@ require_once('head.php');
                             <label for="delegate_regular_business">Delegate Regular Business: <span class="required">*</span></label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="delegate_regular_business" id="delegate_regular_business" value="" required>
+                            <input type="text" class="form-control" name="delegate_regular_business" id="delegate_regular_business" value="<?php echo $result->delegate_regular_business; ?>" required>
                         </div>
                     </div>
                     
@@ -403,7 +403,7 @@ require_once('head.php');
                             <label for="delegate_onspot_academic">Delegate Onspot Academic: <span class="required">*</span></label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="delegate_onspot_academic" id="delegate_onspot_academic" value="" required>
+                            <input type="text" class="form-control" name="delegate_onspot_academic" id="delegate_onspot_academic" value="<?php echo $result->delegate_onspot_academic; ?>" required>
                         </div>
                     </div>
                     
@@ -412,7 +412,7 @@ require_once('head.php');
                             <label for="delegate_onspot_business">Delegate Onspot Business: <span class="required">*</span></label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="delegate_onspot_business" id="delegate_onspot_business" value="" required>
+                            <input type="text" class="form-control" name="delegate_onspot_business" id="delegate_onspot_business" value="<?php echo $result->delegate_onspot_business; ?>" required>
                         </div>
                     </div>
                     

@@ -9,7 +9,7 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 
 $path = 'C:/xampp/htdocs/riconferences';
 $paypalURL = 'https://www.sandbox.paypal.com/cgi-bin/webscr'; //Test PayPal API URL
-$paypalID = 'vkmsivaprasad.php@gmail.com'; //Business Email
+$paypalID = 'vkmsivaprasad@gmail.com'; //Business Email
 // Check connection
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());

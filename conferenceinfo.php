@@ -96,7 +96,7 @@ else
                      <ul>
                         <!-- <li class="mt-2"><a href="#team"><button class="btn btn-sm btn-primary"> Organizing Committee</button></a></li> -->
                         <li class="mt-2"><a href="submit-conference.php?id=<?php echo $result->eventid;?>"><button class=" btn btn-sm btn-danger"> Submit Abstract </button></a></li>
-                        <li class="mt-2"><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SBH8A3TJMFEW4"><button class=" btn btn-sm btn-warning">Register Now  @99</button></a></li>
+                        <li class="mt-2"><a href="register.php?id=<?php echo $result->eventid;?>"><button class=" btn btn-sm btn-warning">Register Now  @99</button></a></li>
                         <li class="mt-2"><a href="documents/dental-brochure.pdf" target="_blank"><button class=" btn btn-sm btn-success">Download Brochure </button></a></li>
                      </ul>
                   </div>
