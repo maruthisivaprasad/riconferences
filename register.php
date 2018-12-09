@@ -26,7 +26,7 @@ $eventid = $result->eventid;
                     <input type="hidden" name="business" value="<?php echo $paypalID; ?>">
                     <input type="hidden" name="cmd" value="_xclick">
                     <input type="hidden" name="currency_code" value="USD">
-                    <input type='hidden' name='cancel_return' value='http://localhost/riconferences/cancel.php'>
+                    <input type='hidden' name='cancel_return' value='http://localhost/riconferences/index.php'>
                     <input type='hidden' name='return' value='http://localhost/riconferences/checkout.php'>
                     <input type='hidden' name='notify_url' value='http://localhost/riconferences/checkout.php'>
                     <select name="title" class="form-control" placeholder="Title" required data-validation-required-message="Please select your title.">
