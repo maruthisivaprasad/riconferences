@@ -24,14 +24,13 @@ else
            <div class="jumbotron jumbotron-fluid bg-dark conference-banner-dental">
             <div class="overlay">
                <div class="container clearfix text-center">
-                  <h5 class="text-white">World Congress On</h5>
                   <h1 class="text-white" "><?php echo $result->title;?></h1>
                   <h5 class="text-white"><?php echo $result->date;?> <?php echo $result->location;?></h5>
                   <h6 class="mt-3 font-size-18 text-white animated fadeIn slower delay-2s">Theme: <?php echo $result->theme;?>	</h6>
                   <div class="action-items">
                      <ul class="list-inline">
                         <!-- <li class="mt-2"><a href="#team"><button class="btn btn-sm btn-primary"> Organizing Committee</button></a></li> -->
-                        <li class="mt-2"><a href="conference/<?php echo $result->slug;?>.php"><button class=" btn btn-sm btn-danger"> Submit Abstract </button></a></li>
+                        <li class="mt-2"><a href="submit-abstract/<?php echo $result->slug;?>.php"><button class=" btn btn-sm btn-danger"> Submit Abstract </button></a></li>
                         <li class="mt-2 g-mx-5"><a href="register.php?id=<?php echo $result->slug;?>"><button class="btn btn-lg btn-warning">Register Now  @99</button></a></li>
                         <?php if(!empty($result->brochure)) {?><li class="mt-2"><a href="documents/<?php echo $result->eventid;?>/<?php echo $result->brochure;?>" target="_blank"><button class=" btn btn-sm btn-success"> Download Brochure</button></a></li><?php }?>
                      </ul>
@@ -67,7 +66,7 @@ else
                                        if(!empty($value)) {
                                        ?>
                                        <div class="carousel-item <?php if($a==0) {?>active<?php }?>">
-                                        <a href="conference/<?php echo $result->slug;?>.php"><img class="d-block w-100" src="documents/<?php echo $result->eventid;?>/<?php echo $value;?>" alt="First slide"></a>
+                                        <a href="submit-abstract/<?php echo $result->slug;?>.php"><img class="d-block w-100" src="documents/<?php echo $result->eventid;?>/<?php echo $value;?>" alt="First slide"></a>
                                         </div>
                             <?php $a++;}}}}?>
                         </div>
@@ -95,7 +94,7 @@ else
                      <h3 class="margin-bottom: 20px;">Quick Links</h3>
                      <ul>
                         <!-- <li class="mt-2"><a href="#team"><button class="btn btn-sm btn-primary"> Organizing Committee</button></a></li> -->
-                        <li class="mt-2"><a href="conference/<?php echo $result->slug;?>.php"><button class=" btn btn-sm btn-danger"> Submit Abstract </button></a></li>
+                        <li class="mt-2"><a href="submit-abstract/<?php echo $result->slug;?>.php"><button class=" btn btn-sm btn-danger"> Submit Abstract </button></a></li>
                         <li class="mt-2"><a href="register.php?id=<?php echo $result->slug;?>"><button class=" btn btn-sm btn-warning">Register Now  @99</button></a></li>
                         <li class="mt-2"><a href="documents/dental-brochure.pdf" target="_blank"><button class=" btn btn-sm btn-success">Download Brochure </button></a></li>
                      </ul>

@@ -211,9 +211,9 @@
             ?>
                 <div class="col-lg-3 col-6">
                     <div class="single-service">
-                        <div class="image-box"><a href="<?php echo $result['slug'];?>"><img src="documents/<?php echo $result['eventid'];?>/<?php echo $result['thumb_image'];?>" alt=""></a></div>
+                        <div class="image-box"><a href="<?php echo $result['slug'];?>.php"><img src="documents/<?php echo $result['eventid'];?>/<?php echo $result['thumb_image'];?>" alt=""></a></div>
                         <div class="text">
-                            <h4><a href="<?php echo $result['slug'];?>"><?php echo $result['title'];?></a></h4>
+                            <h4><a href="<?php echo $result['slug'];?>.php"><?php echo $result['title'];?></a></h4>
                             <p><?php echo $result['theme'];?></p>
                         </div> <!-- /.text -->
                     </div> <!-- /.single-service -->
