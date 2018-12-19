@@ -136,7 +136,21 @@ $result = mysqli_fetch_object($res);
                 <div class="col-md-8"><?php echo $result->delegate_onspot_business; ?></div>
             </div>
             <hr>
-            
+            <div class="row">
+                <div class="col-md-2">Early  date</div>
+                <div class="col-md-8"><?php echo $result->early_date; ?></div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-2">Regular Date</div>
+                <div class="col-md-8"><?php echo $result->regular_date; ?></div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-2">Onspot date</div>
+                <div class="col-md-8"><?php echo $result->onsport_date; ?></div>
+            </div>
+            <hr>
             <div class="row">
                 <div class="col-md-2">Brochure</div>
                 <div class="col-md-8"><?php if (!empty($result->brochure)) { ?><li class="mt-2"><a href="../documents/<?php echo $result->eventid; ?>/<?php echo $result->brochure; ?>" target="_blank"><button class=" btn btn-sm btn-success"> Download Brochure</button></a><?php } ?></div>

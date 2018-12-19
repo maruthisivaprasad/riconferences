@@ -11,14 +11,33 @@ function slugify($string) {
     return trim($slug, "-");
 }
 if (isset($_POST) && !empty($_POST)) {
-    $enddate1 = explode("/", $_POST['end_date']);
-    $enddate = $enddate1[2] . "-" . $enddate1[0] . "-" . $enddate1[1];
+    $enddate = $earlydate = $regulardate = $onspotdate = '';
+    if(isset($_POST['end_date']) && !empty($_POST['end_date']))
+    {
+        $enddate1 = explode("/", $_POST['end_date']);
+        $enddate = $enddate1[2] . "-" . $enddate1[0] . "-" . $enddate1[1];
+    }
+    if(isset($_POST['earlydate']) && !empty($_POST['earlydate']))
+    {
+        $earlydate1 = explode("/", $_POST['earlydate']);
+        $earlydate = $earlydate1[2] . "-" . $earlydate1[0] . "-" . $earlydate1[1];
+    }
+    if(isset($_POST['regulardate']) && !empty($_POST['regulardate']))
+    {
+        $regulardate1 = explode("/", $_POST['regulardate']);
+        $regulardate = $regulardate1[2] . "-" . $regulardate1[0] . "-" . $regulardate1[1];
+    }
+    if(isset($_POST['onspotdate']) && !empty($_POST['onspotdate']))
+    {
+        $onspotdate1 = explode("/", $_POST['onspotdate']);
+        $onspotdate = $onspotdate1[2] . "-" . $onspotdate1[0] . "-" . $onspotdate1[1];
+    }
     $sql = "insert into events (title, slug, date, enddate, location, theme, description, key_topics, speaker_early_academic,"
             . "speaker_early_business, speaker_regular_academic, speaker_regular_business, speaker_onspot_academic,"
             . "speaker_onspot_business, student_early_academic, student_early_business, student_regular_academic,"
             . "student_regular_business, student_onspot_academic, student_onspot_business, delegate_early_academic,"
             . "delegate_early_business, delegate_regular_academic, delegate_regular_business, delegate_onspot_academic,"
-            . "delegate_onspot_business) values "
+            . "delegate_onspot_business, early_date, regular_date, onsport_date) values "
             . "('" . $_POST['title'] . "', '" . slugify($_POST['slug']) . "', '" . $_POST['date'] . "', '" . $enddate . "', "
             . "'" . $_POST['location'] . "', '" . $_POST['theme'] . "', "
             . "'" . htmlentities(addslashes($_POST['description'])) . "', "
@@ -31,7 +50,7 @@ if (isset($_POST) && !empty($_POST)) {
             . "'" . $_POST['student_onspot_business'] . "', '" . $_POST['delegate_early_academic'] . "', "
             . "'" . $_POST['delegate_early_business'] . "', '" . $_POST['delegate_regular_academic'] . "', "
             . "'" . $_POST['delegate_regular_business'] . "', '" . $_POST['delegate_onspot_academic'] . "', "
-            . "'" . $_POST['delegate_onspot_business'] . "')";
+            . "'" . $_POST['delegate_onspot_business'] . "', '" . $earlydate . "', '" . $regulardate . "', '" . $onspotdate . "')";
     mysqli_query($conn, $sql);
     $eventid = $conn->insert_id;
     $sliderfile = $brochurefile = $backgroundfile = $thumbfile = '';
@@ -108,6 +127,9 @@ require_once('head.php');
     });
     $(function () {
         $("#datepicker").datepicker();
+        $( "#earlydate" ).datepicker();
+        $( "#regulardate" ).datepicker();
+        $( "#onspotdate" ).datepicker();
     });
 </script>
 <style>    
@@ -399,6 +421,33 @@ require_once('head.php');
                         </div>
                         <div class="col-md-6">
                             <input type="text" class="form-control" name="delegate_onspot_business" id="delegate_onspot_business" value="" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="earlydate">Early Date: <span class="required">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="earlydate" id="earlydate" value="" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="regulardate">Regular Date: <span class="required">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="regulardate" id="regulardate" value="" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="onspotdate">Onspot Date: <span class="required">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="onspotdate" id="onspotdate" value="" required>
                         </div>
                     </div>
                     

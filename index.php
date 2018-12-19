@@ -302,9 +302,9 @@
 			<div class="consultation-form bg-white">
                             	<div class="container">
 					<div class="row">
+                                            <?php if(isset($_SESSION['message']) && !empty($_SESSION['message'])) echo '<font color="green">'.$_SESSION['message'].'</font>'; ?>
 						<div class="col-lg-8 col-12">
 							<div class="form-wrapper">
-                                                            <?php if(isset($_SESSION['message']) && !empty($_SESSION['message'])) echo $_SESSION['message'];?>
 								<div class="theme-title">
 									<h2>Contact us more information</h2>
 								</div> <!-- /.theme-title -->

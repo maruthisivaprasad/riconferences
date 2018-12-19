@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once('config.php');
 $sql = "insert into contacts (name, email, subject, message) values ('".$_POST['name']."', '".$_POST['email']."', "
         . "'".$_POST['sub']."', '".addslashes($_POST['message'])."')";

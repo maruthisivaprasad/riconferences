@@ -14,14 +14,44 @@ $sql = "select * from events where eventid=" . $_GET['id'];
 $eventid = $_GET['id'];
 $res = mysqli_query($conn, $sql);
 $result = mysqli_fetch_object($res);
-$enddate = '';
+$enddate = $earlydate = $regulardate = $onspotdate = '';
 if (!empty($result->enddate)) {
     $enddate1 = explode("-", $result->enddate);
     $enddate = $enddate1[1] . "/" . $enddate1[2] . "/" . $enddate1[0];
 }
+if (!empty($result->early_date)) {
+    $earlydate1 = explode("-", $result->early_date);
+    $earlydate = $earlydate1[1] . "/" . $earlydate1[2] . "/" . $earlydate1[0];
+}
+if (!empty($result->regular_date)) {
+    $regulardate1 = explode("-", $result->regular_date);
+    $regulardate = $regulardate1[1] . "/" . $regulardate1[2] . "/" . $regulardate1[0];
+}
+if (!empty($result->onsport_date)) {
+    $onspotdate1 = explode("-", $result->onsport_date);
+    $onspotdate = $onspotdate1[1] . "/" . $onspotdate1[2] . "/" . $onspotdate1[0];
+}
 if (isset($_POST) && !empty($_POST)) {
-    $enddate1 = explode("/", $_POST['end_date']);
-    $enddate = $enddate1[2] . "-" . $enddate1[0] . "-" . $enddate1[1];
+    if(isset($_POST['end_date']) && !empty($_POST['end_date']))
+    {
+        $enddate1 = explode("/", $_POST['end_date']);
+        $enddate = $enddate1[2] . "-" . $enddate1[0] . "-" . $enddate1[1];
+    }
+    if(isset($_POST['earlydate']) && !empty($_POST['earlydate']))
+    {
+        $earlydate1 = explode("/", $_POST['earlydate']);
+        $earlydate = $earlydate1[2] . "-" . $earlydate1[0] . "-" . $earlydate1[1];
+    }
+    if(isset($_POST['regulardate']) && !empty($_POST['regulardate']))
+    {
+        $regulardate1 = explode("/", $_POST['regulardate']);
+        $regulardate = $regulardate1[2] . "-" . $regulardate1[0] . "-" . $regulardate1[1];
+    }
+    if(isset($_POST['onspotdate']) && !empty($_POST['onspotdate']))
+    {
+        $onspotdate1 = explode("/", $_POST['onspotdate']);
+        $onspotdate = $onspotdate1[2] . "-" . $onspotdate1[0] . "-" . $onspotdate1[1];
+    }
     $sliderfile = $brochurefile = $backgroundfile = $thumbfile = '';
     if (isset($_FILES["thumb_image"]["name"]) && !empty($_FILES["thumb_image"]["name"])) {
         unlink($path . '/documents/' . $eventid . '/' . $result->thumb_image);
@@ -109,7 +139,8 @@ if (isset($_POST) && !empty($_POST)) {
             . "student_onspot_academic='".$_POST['student_onspot_academic']."', student_onspot_business='".$_POST['student_onspot_business']."', "
             . "delegate_early_academic='".$_POST['delegate_early_academic']."', delegate_early_business='".$_POST['delegate_early_business']."', "
             . "delegate_regular_academic='".$_POST['delegate_regular_academic']."', delegate_regular_business='".$_POST['delegate_regular_business']."', "
-            . "delegate_onspot_academic='".$_POST['delegate_onspot_academic']."', delegate_onspot_business='".$_POST['delegate_onspot_business']."' where eventid=" . $eventid;
+            . "delegate_onspot_academic='".$_POST['delegate_onspot_academic']."', delegate_onspot_business='".$_POST['delegate_onspot_business']."',"
+            . "early_date='".$earlydate."', regular_date='".$regulardate."', onsport_date='".$onspotdate."' where eventid=" . $eventid;
     //echo $sql;exit;
     mysqli_query($conn, $sql);
     header("location: events.php");
@@ -122,6 +153,9 @@ require_once('head.php');
     });
     $(function () {
         $("#datepicker").datepicker();
+        $( "#earlydate" ).datepicker();
+        $( "#regulardate" ).datepicker();
+        $( "#onspotdate" ).datepicker();
     });
 </script>
 <style>    
@@ -413,6 +447,33 @@ require_once('head.php');
                         </div>
                         <div class="col-md-6">
                             <input type="text" class="form-control" name="delegate_onspot_business" id="delegate_onspot_business" value="<?php echo $result->delegate_onspot_business; ?>" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="earlydate">Early Date: <span class="required">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="earlydate" id="earlydate"  value="<?php echo $earlydate; ?>" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="regulardate">Regular Date: <span class="required">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="regulardate" id="regulardate" value="<?php echo $regulardate; ?>" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="onspotdate">Onspot Date: <span class="required">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="onspotdate" id="onspotdate" value="<?php echo $onspotdate; ?>" required>
                         </div>
                     </div>
                     

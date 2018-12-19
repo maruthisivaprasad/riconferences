@@ -55,3 +55,4 @@
 			<button class="scroll-top tran3s">
 				<i class="fa fa-angle-up" aria-hidden="true"></i>
 			</button>
+<?php session_destroy();?>
