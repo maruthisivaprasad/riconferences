@@ -16,17 +16,17 @@ if (!empty($result->onsport_date)) {
 }
 $today = strtotime(date('Y-m-d'));
 if($today > $earlydate1)
-    $earlydate = 0;
-else
     $earlydate = 1;
+else
+    $earlydate = 0;
 if($today > $regulardate1)
-    $regulardate = 0;
-else
     $regulardate = 1;
-if($today > $onspotdate1)
-    $onspotdate = 0;
 else
+    $regulardate = 0;
+if($today > $onspotdate1)
     $onspotdate = 1;
+else
+    $onspotdate = 0;
 ?>
 <title>Register | RI Conferences</title>
 <div class="inner-banner">
@@ -373,9 +373,9 @@ else
                 <thead>
                   <tr>
                     <th style="width:250px"&nbsp;></th>
-                    <th style="width:250px" colspan="2">Earlybird</th>
-                    <th style="width:250px" colspan="2">Regular</th>
-                    <th style="width:250px" colspan="2">On Spot</th>
+                    <th style="width:250px" colspan="2">Earlybird on date <?php echo $result->early_date;?></th>
+                    <th style="width:250px" colspan="2">Regular on date <?php echo $result->regular_date;?></th>
+                    <th style="width:250px" colspan="2">On Spot on date <?php echo $result->onsport_date;?></th>
                   </tr>
                   <tr>
                     <th style="width:250px"&nbsp;></th>

@@ -115,10 +115,7 @@ else
       <!-- Icons Text STarting -->
       <div class="container mb-5">
          <div class="">
-      <div class="conference-subjects padding-lg">
-         <h4 class="text-center padding-sm bg-success-gradient mb-5 mt-5">Keytopics</h4>
          <?php echo html_entity_decode($result->key_topics);?>
-         </div>
        </div>
      </div>
          <!-- Icons Starting -->
