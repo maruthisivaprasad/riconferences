@@ -48,7 +48,7 @@ $result = mysqli_query($conn, $sql);
                                         <i class="glyphicon glyphicon-edit" id="edit_event"></i>
                                     </a>
                                     <a href="#">
-                                        <i class="glyphicon glyphicon-remove-circle" id="edit_event" id="deleteevent" onclick="getdelete('<?php echo $rec['eventid']; ?>')"></i>
+                                        <i class="glyphicon glyphicon-remove-circle" id="deleteevent" onclick="getdelete('<?php echo $rec['eventid']; ?>')"></i>
                                     </a>
                                 </td>
                             </tr>
