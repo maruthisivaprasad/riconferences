@@ -29,7 +29,8 @@ else
                   <h6 class="mt-3 font-size-18 text-white animated fadeIn slower delay-2s">Theme: <?php echo $result->theme;?>	</h6>
                   <div class="action-items">
                      <ul class="list-inline">
-                        <!-- <li class="mt-2"><a href="#team"><button class="btn btn-sm btn-primary"> Organizing Committee</button></a></li> -->
+                        <li class="mt-2"><a href="committee.php?id=<?php echo $result->slug;?>"><button class="btn btn-sm btn-primary"> Organizing Committee</button></a></li>
+                        <li class="mt-2"><a href="schedule.php?id=<?php echo $result->slug;?>"><button class="btn btn-sm btn-primary"> Program Schedule</button></a></li>
                         <li class="mt-2"><a href="submit-abstract/<?php echo $result->slug;?>.php"><button class=" btn btn-sm btn-danger"> Submit Abstract </button></a></li>
                         <li class="mt-2 g-mx-5"><a href="register.php?id=<?php echo $result->slug;?>"><button class="btn btn-lg btn-warning">Register Now  @99</button></a></li>
                         <?php if(!empty($result->brochure)) {?><li class="mt-2"><a href="documents/<?php echo $result->eventid;?>/<?php echo $result->brochure;?>" target="_blank"><button class=" btn btn-sm btn-success"> Download Brochure</button></a></li><?php }?>
