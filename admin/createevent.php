@@ -37,7 +37,7 @@ if (isset($_POST) && !empty($_POST)) {
             . "speaker_onspot_business, student_early_academic, student_early_business, student_regular_academic,"
             . "student_regular_business, student_onspot_academic, student_onspot_business, delegate_early_academic,"
             . "delegate_early_business, delegate_regular_academic, delegate_regular_business, delegate_onspot_academic,"
-            . "delegate_onspot_business, early_date, regular_date, onsport_date) values "
+            . "delegate_onspot_business, early_date, regular_date, organising_committee, program_schedule, onsport_date) values "
             . "('" . $_POST['title'] . "', '" . slugify($_POST['slug']) . "', '" . $_POST['date'] . "', '" . $enddate . "', "
             . "'" . $_POST['location'] . "', '" . $_POST['theme'] . "', "
             . "'" . htmlentities(addslashes($_POST['description'])) . "', "
@@ -50,7 +50,8 @@ if (isset($_POST) && !empty($_POST)) {
             . "'" . $_POST['student_onspot_business'] . "', '" . $_POST['delegate_early_academic'] . "', "
             . "'" . $_POST['delegate_early_business'] . "', '" . $_POST['delegate_regular_academic'] . "', "
             . "'" . $_POST['delegate_regular_business'] . "', '" . $_POST['delegate_onspot_academic'] . "', "
-            . "'" . $_POST['delegate_onspot_business'] . "', '" . $earlydate . "', '" . $regulardate . "', '" . $onspotdate . "')";
+            . "'" . $_POST['delegate_onspot_business'] . "', '" . $earlydate . "', '" . $regulardate . "', "
+            . "'" . $_POST['organising_committee'] . "', '" . $_POST['program_schedule'] . "', '" . $onspotdate . "')";
     mysqli_query($conn, $sql);
     $eventid = $conn->insert_id;
     $sliderfile = $brochurefile = $backgroundfile = $thumbfile = '';
@@ -258,6 +259,30 @@ require_once('head.php');
                             <textarea name="key_topics" class="form-control" id="key_topics"></textarea>
                             <script>
                                 CKEDITOR.replace('key_topics');
+                            </script>
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="organising_committee">Organising Committee: </label>
+                        </div>
+                        <div class="col-md-6">
+                            <textarea name="organising_committee" class="form-control" id="organising_committee"></textarea>
+                            <script>
+                                CKEDITOR.replace('organising_committee');
+                            </script>
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="program_schedule">Program Schedule: </label>
+                        </div>
+                        <div class="col-md-6">
+                            <textarea name="program_schedule" class="form-control" id="program_schedule"></textarea>
+                            <script>
+                                CKEDITOR.replace('program_schedule');
                             </script>
                         </div>
                     </div>

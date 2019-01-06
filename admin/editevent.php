@@ -140,7 +140,8 @@ if (isset($_POST) && !empty($_POST)) {
             . "delegate_early_academic='".$_POST['delegate_early_academic']."', delegate_early_business='".$_POST['delegate_early_business']."', "
             . "delegate_regular_academic='".$_POST['delegate_regular_academic']."', delegate_regular_business='".$_POST['delegate_regular_business']."', "
             . "delegate_onspot_academic='".$_POST['delegate_onspot_academic']."', delegate_onspot_business='".$_POST['delegate_onspot_business']."',"
-            . "early_date='".$earlydate."', regular_date='".$regulardate."', onsport_date='".$onspotdate."' where eventid=" . $eventid;
+            . "early_date='".$earlydate."', regular_date='".$regulardate."', onsport_date='".$onspotdate."'"
+            . "organising_committee='".$_POST['organising_committee']."', program_schedule='".$_POST['program_schedule']."' where eventid=" . $eventid;
     //echo $sql;exit;
     mysqli_query($conn, $sql);
     header("location: events.php");
@@ -284,6 +285,30 @@ require_once('head.php');
                             <textarea name="key_topics" class="form-control" id="key_topics"><?php echo $result->key_topics; ?></textarea>
                             <script>
                                 CKEDITOR.replace('key_topics');
+                            </script>
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="organising_committee">Organising Committee: </label>
+                        </div>
+                        <div class="col-md-6">
+                            <textarea name="organising_committee" class="form-control" id="organising_committee"><?php echo $result->organising_committee; ?></textarea>
+                            <script>
+                                CKEDITOR.replace('organising_committee');
+                            </script>
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="program_schedule">Program Schedule: </label>
+                        </div>
+                        <div class="col-md-6">
+                            <textarea name="program_schedule" class="form-control" id="program_schedule"><?php echo $result->program_schedule; ?></textarea>
+                            <script>
+                                CKEDITOR.replace('program_schedule');
                             </script>
                         </div>
                     </div>
