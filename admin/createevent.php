@@ -37,7 +37,7 @@ if (isset($_POST) && !empty($_POST)) {
             . "speaker_onspot_business, student_early_academic, student_early_business, student_regular_academic,"
             . "student_regular_business, student_onspot_academic, student_onspot_business, delegate_early_academic,"
             . "delegate_early_business, delegate_regular_academic, delegate_regular_business, delegate_onspot_academic,"
-            . "delegate_onspot_business, early_date, regular_date, organising_committee, program_schedule, onsport_date) values "
+            . "delegate_onspot_business, early_date, regular_date, organising_committee, onsport_date) values "
             . "('" . $_POST['title'] . "', '" . slugify($_POST['slug']) . "', '" . $_POST['date'] . "', '" . $enddate . "', "
             . "'" . $_POST['location'] . "', '" . $_POST['theme'] . "', "
             . "'" . htmlentities(addslashes($_POST['description'])) . "', "
@@ -51,11 +51,25 @@ if (isset($_POST) && !empty($_POST)) {
             . "'" . $_POST['delegate_early_business'] . "', '" . $_POST['delegate_regular_academic'] . "', "
             . "'" . $_POST['delegate_regular_business'] . "', '" . $_POST['delegate_onspot_academic'] . "', "
             . "'" . $_POST['delegate_onspot_business'] . "', '" . $earlydate . "', '" . $regulardate . "', "
-            . "'" . $_POST['organising_committee'] . "', '" . $_POST['program_schedule'] . "', '" . $onspotdate . "')";
+            . "'" . $_POST['organising_committee'] . "', '" . $onspotdate . "')";
     mysqli_query($conn, $sql);
     $eventid = $conn->insert_id;
-    $sliderfile = $brochurefile = $backgroundfile = $thumbfile = '';
+    $sliderfile = $brochurefile = $backgroundfile = $thumbfile = $schedulefile = '';
     if ($eventid > 0) {
+        if (isset($_FILES["program_schedule"]["name"]) && !empty($_FILES["program_schedule"]["name"])) {
+            if (!file_exists($path . '/documents/' . $eventid))
+                mkdir($path . '/documents/' . $eventid, 0777, true);
+            if (!file_exists($path . '/documents/' . $eventid . '/schedule'))
+                mkdir($path . '/documents/' . $eventid . '/schedule', 0777, true);
+
+            $extension = pathinfo($_FILES["program_schedule"]["name"], PATHINFO_EXTENSION);
+            $name = substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, '8');
+            $target_file = $path . '/documents/' . $eventid . '/schedule/' . $name . "." . $extension;
+
+            if (move_uploaded_file($_FILES["program_schedule"]["tmp_name"], $target_file))
+                $schedulefile = 'schedule/' . $name . '.' . $extension;
+        }
+        
         if (isset($_FILES["thumb_image"]["name"]) && !empty($_FILES["thumb_image"]["name"])) {
             if (!file_exists($path . '/documents/' . $eventid))
                 mkdir($path . '/documents/' . $eventid, 0777, true);
@@ -115,7 +129,8 @@ if (isset($_POST) && !empty($_POST)) {
             if (!empty($sliderfile))
                 $sliderfile = rtrim($sliderfile, ",");
         }
-        $sql = "update events set thumb_image='" . $thumbfile . "', background_image='" . $backgroundfile . "', brochure='" . $brochurefile . "', slider_images='" . $sliderfile . "' where eventid=" . $eventid;
+        $sql = "update events set thumb_image='" . $thumbfile . "', background_image='" . $backgroundfile . "', "
+                . "brochure='" . $brochurefile . "', slider_images='" . $sliderfile . "', program_schedule='" . $schedulefile . "' where eventid=" . $eventid;
         mysqli_query($conn, $sql);
     }
     header("location: events.php");
@@ -280,10 +295,7 @@ require_once('head.php');
                             <label for="program_schedule">Program Schedule: </label>
                         </div>
                         <div class="col-md-6">
-                            <textarea name="program_schedule" class="form-control" id="program_schedule"></textarea>
-                            <script>
-                                CKEDITOR.replace('program_schedule');
-                            </script>
+                            <input type="file" class="form-control" name="program_schedule" id="program_schedule" value="">
                         </div>
                     </div>
                     

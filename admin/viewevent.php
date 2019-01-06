@@ -53,12 +53,6 @@ $result = mysqli_fetch_object($res);
             <hr>
             
             <div class="row">
-                <div class="col-md-2">Program Schedule</div>
-                <div class="col-md-8"><?php echo $result->program_schedule; ?></div>
-            </div>
-            <hr>
-            
-            <div class="row">
                 <div class="col-md-2">Speaker Early Academic</div>
                 <div class="col-md-8"><?php echo $result->speaker_early_academic; ?></div>
             </div>

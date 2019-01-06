@@ -52,7 +52,25 @@ if (isset($_POST) && !empty($_POST)) {
         $onspotdate1 = explode("/", $_POST['onspotdate']);
         $onspotdate = $onspotdate1[2] . "-" . $onspotdate1[0] . "-" . $onspotdate1[1];
     }
-    $sliderfile = $brochurefile = $backgroundfile = $thumbfile = '';
+    $sliderfile = $brochurefile = $backgroundfile = $thumbfile = $schedulefile = '';
+    
+    if (isset($_FILES["program_schedule"]["name"]) && !empty($_FILES["program_schedule"]["name"])) {
+        unlink($path . '/documents/' . $eventid . '/' . $result->program_schedule);
+        if (!file_exists($path . '/documents/' . $eventid))
+            mkdir($path . '/documents/' . $eventid, 0777, true);
+        if (!file_exists($path . '/documents/' . $eventid . '/thumb'))
+            mkdir($path . '/documents/' . $eventid . '/schedule', 0777, true);
+
+        $extension = pathinfo($_FILES["program_schedule"]["name"], PATHINFO_EXTENSION);
+        $name = substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, '8');
+        $target_file = $path . '/documents/' . $eventid . '/schedule/' . $name . "." . $extension;
+
+        if (move_uploaded_file($_FILES["program_schedule"]["tmp_name"], $target_file))
+            $schedulefile = 'schedule/' . $name . '.' . $extension;
+        $sql = "update events set program_schedule='" . $schedulefile . "' where eventid=" . $eventid;
+        mysqli_query($conn, $sql);
+    }
+    
     if (isset($_FILES["thumb_image"]["name"]) && !empty($_FILES["thumb_image"]["name"])) {
         unlink($path . '/documents/' . $eventid . '/' . $result->thumb_image);
         if (!file_exists($path . '/documents/' . $eventid))
@@ -141,7 +159,7 @@ if (isset($_POST) && !empty($_POST)) {
             . "delegate_regular_academic='".$_POST['delegate_regular_academic']."', delegate_regular_business='".$_POST['delegate_regular_business']."', "
             . "delegate_onspot_academic='".$_POST['delegate_onspot_academic']."', delegate_onspot_business='".$_POST['delegate_onspot_business']."',"
             . "early_date='".$earlydate."', regular_date='".$regulardate."', onsport_date='".$onspotdate."'"
-            . "organising_committee='".$_POST['organising_committee']."', program_schedule='".$_POST['program_schedule']."' where eventid=" . $eventid;
+            . "organising_committee='".$_POST['organising_committee']."' where eventid=" . $eventid;
     //echo $sql;exit;
     mysqli_query($conn, $sql);
     header("location: events.php");
@@ -306,10 +324,7 @@ require_once('head.php');
                             <label for="program_schedule">Program Schedule: </label>
                         </div>
                         <div class="col-md-6">
-                            <textarea name="program_schedule" class="form-control" id="program_schedule"><?php echo $result->program_schedule; ?></textarea>
-                            <script>
-                                CKEDITOR.replace('program_schedule');
-                            </script>
+                            <input type="file" class="form-control" name="program_schedule" id="program_schedule" value="">
                         </div>
                     </div>
                     
