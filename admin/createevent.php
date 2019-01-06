@@ -51,7 +51,7 @@ if (isset($_POST) && !empty($_POST)) {
             . "'" . $_POST['delegate_early_business'] . "', '" . $_POST['delegate_regular_academic'] . "', "
             . "'" . $_POST['delegate_regular_business'] . "', '" . $_POST['delegate_onspot_academic'] . "', "
             . "'" . $_POST['delegate_onspot_business'] . "', '" . $earlydate . "', '" . $regulardate . "', "
-            . "'" . $_POST['organising_committee'] . "', '" . $onspotdate . "')";
+            . "'" . htmlentities(addslashes($_POST['organising_committee'])) . "', '" . $onspotdate . "')";
     mysqli_query($conn, $sql);
     $eventid = $conn->insert_id;
     $sliderfile = $brochurefile = $backgroundfile = $thumbfile = $schedulefile = '';

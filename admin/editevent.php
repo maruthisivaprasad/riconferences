@@ -58,7 +58,7 @@ if (isset($_POST) && !empty($_POST)) {
         unlink($path . '/documents/' . $eventid . '/' . $result->program_schedule);
         if (!file_exists($path . '/documents/' . $eventid))
             mkdir($path . '/documents/' . $eventid, 0777, true);
-        if (!file_exists($path . '/documents/' . $eventid . '/thumb'))
+        if (!file_exists($path . '/documents/' . $eventid . '/schedule'))
             mkdir($path . '/documents/' . $eventid . '/schedule', 0777, true);
 
         $extension = pathinfo($_FILES["program_schedule"]["name"], PATHINFO_EXTENSION);
@@ -158,8 +158,8 @@ if (isset($_POST) && !empty($_POST)) {
             . "delegate_early_academic='".$_POST['delegate_early_academic']."', delegate_early_business='".$_POST['delegate_early_business']."', "
             . "delegate_regular_academic='".$_POST['delegate_regular_academic']."', delegate_regular_business='".$_POST['delegate_regular_business']."', "
             . "delegate_onspot_academic='".$_POST['delegate_onspot_academic']."', delegate_onspot_business='".$_POST['delegate_onspot_business']."',"
-            . "early_date='".$earlydate."', regular_date='".$regulardate."', onsport_date='".$onspotdate."'"
-            . "organising_committee='".$_POST['organising_committee']."' where eventid=" . $eventid;
+            . "early_date='".$earlydate."', regular_date='".$regulardate."', onsport_date='".$onspotdate."', "
+            . "organising_committee='".htmlentities(addslashes($_POST['organising_committee']))."' where eventid=" . $eventid;
     //echo $sql;exit;
     mysqli_query($conn, $sql);
     header("location: events.php");
