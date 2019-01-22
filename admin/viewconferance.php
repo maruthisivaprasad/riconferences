@@ -67,7 +67,9 @@ if ($result->eventid > 0) {
             <hr>
             <div class="row">
                 <div class="col-md-2">Upload File</div>
-                <div class="col-md-4"><?php if (!empty($result->uploadfile)) { ?><img src="../documents/<?php echo $result->eventid; ?>/<?php echo $result->uploadfile; ?>" alt=""><?php } ?></div>
+                <div class="col-md-4">
+                    <?php if (!empty($result->uploadfile)) { ?><a href="../documents/<?php echo $result->eventid; ?>/<?php echo $result->uploadfile; ?>" target="_blank"><button class=" btn btn-sm btn-success"> Download File</button></a><?php } ?>
+                </div>
             </div>
         </div>
     </div>
