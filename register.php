@@ -31,21 +31,19 @@ else
 <title>Register | RI Conferences</title>
 <div class="inner-banner">
     <div class="overlay">
-        <div class="container clearfix">
-            <h2>Register</h2>
-            <ul>
-                <li><a href="<?php echo $urlpath;?>/index.php">Home</a></li>
-                <li>/</li>
-                <li>Register</li>
-            </ul>
+        <div class="container clearfix text-center">
+            <h2>Registration</h2>
         </div> <!-- /.container -->
     </div> <!-- /.overlay -->
 </div> <!-- /.inner-banner -->
 <div class="about-us-section">
     <div class="container">
-        <form action="<?php echo $paypalURL; ?>" method="post" name="form1" id="form1">
-            <div class="col-sm-6">
-                <div class="form-group">
+        <div class="row">
+            <div class="col-md-10">
+                <form action="<?php echo $paypalURL; ?>" method="post" name="form1" id="form1">
+            <div class="col">
+                <div class="form-row">
+                <div class="form-group col-md-6 mb-2">
                     <input type="hidden" name="business" value="<?php echo $paypalID; ?>">
                     <input type="hidden" name="cmd" value="_xclick">
                     <input type="hidden" name="currency_code" value="USD">
@@ -60,21 +58,25 @@ else
                       <option value="Ms.">Ms.</option>
                     </select>
                     <input type="hidden" name="eventid" id="eventid" value="<?php echo $eventid;?>">
-                    <p class="help-block text-danger"></p>
+                    <p class="help-block text-danger ma-0 mb-0"></p>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-md-6 mb-2">
                     <input type="text" class="form-control" placeholder="Your Name *" name="name" id="name" required data-validation-required-message="Please enter your name.">
-                    <p class="help-block text-danger"></p>
+                    <p class="help-block text-danger ma-0 mb-0"></p>
                 </div>
-                <div class="form-group">
+                </div>
+                <div class="form-row">
+                <div class="form-group col-md-6 mb-2">
                     <input type="email" class="form-control" placeholder="Your Email *" name="email" id="email" required data-validation-required-message="Please enter your email address.">
-                    <p class="help-block text-danger"></p>
+                    <p class="help-block text-danger ma-0 mb-0"></p>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-md-6 mb-2">
                     <input type="tel" class="form-control" placeholder="Your Phone *" name="phone" id="phone" required data-validation-required-message="Please enter your phone number.">
-                    <p class="help-block text-danger"></p>
+                    <p class="help-block text-danger ma-0 mb-0"></p>
                 </div>
-                <div class="form-group">
+                </div>
+                <div class="form-row">
+                <div class="form-group col-md-6 mb-2">
                         <select class="form-control" name="country" placeholder="Select country" required data-validation-required-message="Please select your country.">
                             <option value="" selected="selected">Select country</option>
                                               <option value="United States" >United States</option>
@@ -359,12 +361,13 @@ else
                                               <option value="Zambia"  >Zambia</option>
                                               <option value="Zimbabwe"  >Zimbabwe</option>
                     </select>
-                    <p class="help-block text-danger"></p>
+                    <p class="help-block text-danger ma-0 mb-0"></p>
                  </div>
                 
-                 <div class="form-group">
+                 <div class="form-group col-md-6 mb-2">
 					<textarea class="form-control" placeholder="Address" name="address" required data-validation-required-message="Please enter your address."></textarea>
-                    <p class="help-block text-danger"></p>
+                    <p class="help-block text-danger ma-0 mb-0"></p>
+                 </div>
                  </div>
               
               <div class="clearfix"></div>
@@ -393,7 +396,7 @@ else
                   <tr>
                     <td>Speaker</td>
                     <td><?php if($earlydate == 0) {?>
-                            <input type="radio" name="amount" id="amount" value="<?php echo $result->speaker_early_academic;?>"/>
+                            <input type="radio" name="eamount" id="eamount" value="<?php echo $result->speaker_early_academic;?>"/>
                         <?php }?>  $<?php echo $result->speaker_early_academic;?></td>
                     <td><?php if($earlydate == 0) {?>
                         <input type="radio" name="eamount" id="eamount" value="<?php echo $result->speaker_early_business;?>"/><?php }?>  $<?php echo $result->speaker_early_business;?></td>
@@ -405,9 +408,6 @@ else
                         <input type="radio" name="eamount" id="eamount" value="<?php echo $result->speaker_onspot_academic;?>"/><?php }?>  $<?php echo $result->speaker_onspot_academic;?></td>
                     <td><?php if($onspotdate == 0) {?>
                         <input type="radio" name="eamount" id="eamount" value="<?php echo $result->speaker_onspot_business;?>"/><?php }?>  $<?php echo $result->speaker_onspot_business;?></td>
-                    <td>
-                        <input type="radio" name="aamount" id="aamount" value="<?php echo $result->speaker_accommodation;?>"/>$<?php echo $result->speaker_accommodation;?>
-                    </td>
                   </tr>
                   <tr>
                     <td>Student</td>
@@ -423,9 +423,6 @@ else
                         <input type="radio" name="eamount" id="eamount" value="<?php echo $result->student_onspot_academic;?>"/><?php }?>  $<?php echo $result->student_onspot_academic;?></td>
                     <td><?php if($onspotdate == 0) {?>
                         <input type="radio" name="eamount" id="eamount" value="<?php echo $result->student_onspot_business;?>"/><?php }?>  $<?php echo $result->student_onspot_business;?></td>
-                    <td>
-                        <input type="radio" name="aamount" id="aamount" value="<?php echo $result->student_accommodation;?>"/>$<?php echo $result->student_accommodation;?>
-                    </td>
                   </tr>
                   <tr>
                     <td>Delegate</td>
@@ -441,19 +438,43 @@ else
                         <input type="radio" name="eamount" id="eamount" value="<?php echo $result->delegate_onspot_academic;?>"/><?php }?>  $<?php echo $result->delegate_onspot_academic;?></td>
                     <td><?php if($onspotdate == 0) {?>
                         <input type="radio" name="eamount" id="eamount" value="<?php echo $result->delegate_onspot_business;?>"/><?php }?>  $<?php echo $result->delegate_onspot_business;?></td>
-                    <td>
+                  </tr>
+                  <tr>
+                    <td>Delegate</td>
+                    <td colspan="2">
+                        <input type="radio" name="aamount" id="aamount" value="<?php echo $result->speaker_accommodation;?>"/>$<?php echo $result->speaker_accommodation;?>
+                    </td>
+                    <td colspan="2">
+                        <input type="radio" name="aamount" id="aamount" value="<?php echo $result->student_accommodation;?>"/>$<?php echo $result->student_accommodation;?>
+                    </td>
+                    <td colspan="2">
                         <input type="radio" name="aamount" id="aamount" value="<?php echo $result->delegate_accommodation;?>"/>$<?php echo $result->delegate_accommodation;?>
                     </td>
                   </tr>
+                  <tr>
+                      <td colspan="7">Total Amount: <input type="text" name="amount" id="amount" value="" readonly=""/></td>
+                  </tr>
                 </tbody>
               </table>
-                Total Amount: <input type="text" name="amount" id="amount" value="" readonly=""/>         
-                <input type="image" name="submit" border="0"
-        src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" alt="PayPal - The safer, easier way to pay online">
-        <img alt="" border="0" width="1" height="1" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
+                <input type="image" class="btn btn-md" name="submit" border="0" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" alt="PayPal - The safer, easier way to pay online"> 
+                <img alt="" border="0" width="1" height="1" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
             </form>  
-                </div> <!-- /.container -->
-                </div> </br><!-- /.about-us-section -->
+            </div>
+        </div>
+    </div> <!-- /.container -->
+    <div class="col-md-2">
+        <img src="images/paypal.jpg" class="mb-2">
+        <h4>Only Registration Includes</h4>
+        <ul>
+            <li>Access to all Speaker Sessions and Network Sessions</li>
+            <li>Fully Accessibility to Conference E-Material</li>
+            <li>Lunch & Coffee breaks during the conference</li>
+            <li>Certificate of participants</li>
+        </ul>
+    </div>
+</div>
+</div> </br><!-- /.about-us-section -->
+            
             <?php include_once 'footer.php'; ?>
             <!-- jQuery -->
             <script src="<?php echo $urlpath;?>/vendor/jquery.2.2.3.min.js"></script>
@@ -482,9 +503,13 @@ else
 </html>
 <script>
     $("input[name='eamount']").change(function(){
-        var eamount = $('input[name=eamount]:checked', '#form1').val();
-        var aamount = $('input[name=aamount]:checked', '#form1').val();
-        if(aamount !== '')
+        var eamount = parseInt($('input[name=eamount]:checked', '#form1').val(), 10);
+        var aeamount = $('input[name=aamount]:checked', '#form1').val();
+        if(aeamount !== undefined)
+            var aamount = parseInt($('input[name=aamount]:checked', '#form1').val(), 10);
+        else
+            var aamount = '';
+        if(aamount != '')
         {
             var amount = eamount + aamount;
         }
@@ -493,9 +518,14 @@ else
         $('#amount').val(amount);
     });
     $("input[name='aamount']").change(function(){
-        var eamount = $('input[name=eamount]:checked', '#form1').val();
-        var aamount = $('input[name=aamount]:checked', '#form1').val();
-        if(eamount !== '')
+        var eamount = parseInt($('input[name=aamount]:checked', '#form1').val(), 10);
+        var aeamount = $('input[name=eamount]:checked', '#form1').val();
+        if(aeamount !== undefined)
+            var aamount = parseInt($('input[name=eamount]:checked', '#form1').val(), 10);
+        else
+            var aamount = '';
+        var aamount = parseInt($('input[name=eamount]:checked', '#form1').val(), 10);
+        if(aamount != '')
         {
             var amount = eamount + aamount;
         }
