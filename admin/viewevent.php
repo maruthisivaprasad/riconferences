@@ -158,6 +158,21 @@ $result = mysqli_fetch_object($res);
             </div>
             <hr>
             <div class="row">
+                <div class="col-md-2">Speaker Accommodation</div>
+                <div class="col-md-8"><?php echo $result->speaker_accommodation; ?></div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-2">Student Accommodation</div>
+                <div class="col-md-8"><?php echo $result->student_accommodation; ?></div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-2">Delegate Accommodation</div>
+                <div class="col-md-8"><?php echo $result->delegate_accommodation; ?></div>
+            </div>
+            <hr>
+            <div class="row">
                 <div class="col-md-2">Brochure</div>
                 <div class="col-md-8"><?php if (!empty($result->brochure)) { ?><li class="mt-2"><a href="../documents/<?php echo $result->eventid; ?>/<?php echo $result->brochure; ?>" target="_blank"><button class=" btn btn-sm btn-success"> Download Brochure</button></a><?php } ?></div>
             </div>

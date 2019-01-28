@@ -159,7 +159,9 @@ if (isset($_POST) && !empty($_POST)) {
             . "delegate_regular_academic='".$_POST['delegate_regular_academic']."', delegate_regular_business='".$_POST['delegate_regular_business']."', "
             . "delegate_onspot_academic='".$_POST['delegate_onspot_academic']."', delegate_onspot_business='".$_POST['delegate_onspot_business']."',"
             . "early_date='".$earlydate."', regular_date='".$regulardate."', onsport_date='".$onspotdate."', "
-            . "organising_committee='".htmlentities(addslashes($_POST['organising_committee']))."' where eventid=" . $eventid;
+            . "organising_committee='".htmlentities(addslashes($_POST['organising_committee']))."', "
+            . "speaker_accommodation='".$_POST['speaker_accommodation']."', student_accommodation='".$_POST['student_accommodation']."',"
+            . "delegate_accommodation='".$_POST['delegate_accommodation']."' where eventid=" . $eventid;
     //echo $sql;exit;
     mysqli_query($conn, $sql);
     header("location: events.php");
@@ -514,6 +516,33 @@ require_once('head.php');
                         </div>
                         <div class="col-md-6">
                             <input type="text" class="form-control" name="onspotdate" id="onspotdate" value="<?php echo $onspotdate; ?>" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="speaker_accommodation">Speaker Accommodation: <span class="required">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="speaker_accommodation" id="speaker_accommodation" value="<?php echo $result->speaker_accommodation; ?>" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="student_accommodation">Student Accommodation: <span class="required">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="student_accommodation" id="student_accommodation" value="<?php echo $result->student_accommodation; ?>" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="delegate_accommodation">Delegate Accommodation: <span class="required">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="delegate_accommodation" id="delegate_accommodation" value="<?php echo $result->delegate_accommodation; ?>" required>
                         </div>
                     </div>
                     

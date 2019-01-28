@@ -37,7 +37,8 @@ if (isset($_POST) && !empty($_POST)) {
             . "speaker_onspot_business, student_early_academic, student_early_business, student_regular_academic,"
             . "student_regular_business, student_onspot_academic, student_onspot_business, delegate_early_academic,"
             . "delegate_early_business, delegate_regular_academic, delegate_regular_business, delegate_onspot_academic,"
-            . "delegate_onspot_business, early_date, regular_date, organising_committee, onsport_date) values "
+            . "delegate_onspot_business, early_date, regular_date, organising_committee, onsport_date, speaker_accommodation,"
+            . "student_accommodation, delegate_accommodation) values "
             . "('" . $_POST['title'] . "', '" . slugify($_POST['slug']) . "', '" . $_POST['date'] . "', '" . $enddate . "', "
             . "'" . $_POST['location'] . "', '" . $_POST['theme'] . "', "
             . "'" . htmlentities(addslashes($_POST['description'])) . "', "
@@ -51,7 +52,9 @@ if (isset($_POST) && !empty($_POST)) {
             . "'" . $_POST['delegate_early_business'] . "', '" . $_POST['delegate_regular_academic'] . "', "
             . "'" . $_POST['delegate_regular_business'] . "', '" . $_POST['delegate_onspot_academic'] . "', "
             . "'" . $_POST['delegate_onspot_business'] . "', '" . $earlydate . "', '" . $regulardate . "', "
-            . "'" . htmlentities(addslashes($_POST['organising_committee'])) . "', '" . $onspotdate . "')";
+            . "'" . htmlentities(addslashes($_POST['organising_committee'])) . "', '" . $onspotdate . "', "
+            . "'" . $_POST['speaker_accommodation'] . "', '" . $_POST['student_accommodation'] . "', "
+            . "'" . $_POST['delegate_accommodation'] . "')";
     mysqli_query($conn, $sql);
     $eventid = $conn->insert_id;
     $sliderfile = $brochurefile = $backgroundfile = $thumbfile = $schedulefile = '';
@@ -485,6 +488,33 @@ require_once('head.php');
                         </div>
                         <div class="col-md-6">
                             <input type="text" class="form-control" name="onspotdate" id="onspotdate" value="" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="speaker_accommodation">Speaker Accommodation: <span class="required">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="speaker_accommodation" id="speaker_accommodation" value="" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="student_accommodation">Student Accommodation: <span class="required">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="student_accommodation" id="student_accommodation" value="" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="delegate_accommodation">Delegate Accommodation: <span class="required">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="delegate_accommodation" id="delegate_accommodation" value="" required>
                         </div>
                     </div>
                     

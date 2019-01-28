@@ -385,6 +385,7 @@ else
                     <th style="width:125px">Business</th>
                     <th style="width:125px">Academic</th>
                     <th style="width:125px">Business</th>
+                    <th style="width:125px">Accommodation</th>
                   </tr>
                 </thead>
                 
@@ -395,48 +396,58 @@ else
                             <input type="radio" name="amount" id="amount" value="<?php echo $result->speaker_early_academic;?>"/>
                         <?php }?>  $<?php echo $result->speaker_early_academic;?></td>
                     <td><?php if($earlydate == 0) {?>
-                        <input type="radio" name="amount" id="amount" value="<?php echo $result->speaker_early_business;?>"/><?php }?>  $<?php echo $result->speaker_early_business;?></td>
+                        <input type="radio" name="eamount" id="eamount" value="<?php echo $result->speaker_early_business;?>"/><?php }?>  $<?php echo $result->speaker_early_business;?></td>
                     <td><?php if($regulardate == 0) {?>
-                        <input type="radio" name="amount" id="amount" value="<?php echo $result->speaker_regular_academic;?>"/><?php }?>  $<?php echo $result->speaker_regular_academic;?></td>
+                        <input type="radio" name="eamount" id="eamount" value="<?php echo $result->speaker_regular_academic;?>"/><?php }?>  $<?php echo $result->speaker_regular_academic;?></td>
                     <td><?php if($regulardate == 0) {?>
-                        <input type="radio" name="amount" id="amount" value="<?php echo $result->speaker_regular_business;?>"/><?php }?>  $<?php echo $result->speaker_regular_business;?></td>
+                        <input type="radio" name="eamount" id="eamount" value="<?php echo $result->speaker_regular_business;?>"/><?php }?>  $<?php echo $result->speaker_regular_business;?></td>
                     <td><?php if($onspotdate == 0) {?>
-                        <input type="radio" name="amount" id="amount" value="<?php echo $result->speaker_onspot_academic;?>"/><?php }?>  $<?php echo $result->speaker_onspot_academic;?></td>
+                        <input type="radio" name="eamount" id="eamount" value="<?php echo $result->speaker_onspot_academic;?>"/><?php }?>  $<?php echo $result->speaker_onspot_academic;?></td>
                     <td><?php if($onspotdate == 0) {?>
-                        <input type="radio" name="amount" id="amount" value="<?php echo $result->speaker_onspot_business;?>"/><?php }?>  $<?php echo $result->speaker_onspot_business;?></td>
+                        <input type="radio" name="eamount" id="eamount" value="<?php echo $result->speaker_onspot_business;?>"/><?php }?>  $<?php echo $result->speaker_onspot_business;?></td>
+                    <td>
+                        <input type="radio" name="aamount" id="aamount" value="<?php echo $result->speaker_accommodation;?>"/>$<?php echo $result->speaker_accommodation;?>
+                    </td>
                   </tr>
                   <tr>
                     <td>Student</td>
                     <td><?php if($earlydate == 0) {?>
-                        <input type="radio" name="amount" id="amount" value="<?php echo $result->student_early_academic;?>"/><?php }?>  $<?php echo $result->student_early_academic;?></td>
+                        <input type="radio" name="eamount" id="eamount" value="<?php echo $result->student_early_academic;?>"/><?php }?>  $<?php echo $result->student_early_academic;?></td>
                     <td><?php if($earlydate == 0) {?>
-                        <input type="radio" name="amount" id="amount" value="<?php echo $result->student_early_business;?>"/><?php }?>  $<?php echo $result->student_early_business;?></td>
+                        <input type="radio" name="eamount" id="eamount" value="<?php echo $result->student_early_business;?>"/><?php }?>  $<?php echo $result->student_early_business;?></td>
                     <td><?php if($regulardate == 0) {?>
-                        <input type="radio" name="amount" id="amount" value="<?php echo $result->student_regular_academic;?>"/><?php }?>  $<?php echo $result->student_regular_academic;?></td>
+                        <input type="radio" name="eamount" id="eamount" value="<?php echo $result->student_regular_academic;?>"/><?php }?>  $<?php echo $result->student_regular_academic;?></td>
                     <td><?php if($regulardate == 0) {?>
-                        <input type="radio" name="amount" id="amount" value="<?php echo $result->student_regular_business;?>"/><?php }?>  $<?php echo $result->student_regular_business;?></td>
+                        <input type="radio" name="eamount" id="eamount" value="<?php echo $result->student_regular_business;?>"/><?php }?>  $<?php echo $result->student_regular_business;?></td>
                     <td><?php if($onspotdate == 0) {?>
-                        <input type="radio" name="amount" id="amount" value="<?php echo $result->student_onspot_academic;?>"/><?php }?>  $<?php echo $result->student_onspot_academic;?></td>
+                        <input type="radio" name="eamount" id="eamount" value="<?php echo $result->student_onspot_academic;?>"/><?php }?>  $<?php echo $result->student_onspot_academic;?></td>
                     <td><?php if($onspotdate == 0) {?>
-                        <input type="radio" name="amount" id="amount" value="<?php echo $result->student_onspot_business;?>"/><?php }?>  $<?php echo $result->student_onspot_business;?></td>
+                        <input type="radio" name="eamount" id="eamount" value="<?php echo $result->student_onspot_business;?>"/><?php }?>  $<?php echo $result->student_onspot_business;?></td>
+                    <td>
+                        <input type="radio" name="aamount" id="aamount" value="<?php echo $result->student_accommodation;?>"/>$<?php echo $result->student_accommodation;?>
+                    </td>
                   </tr>
                   <tr>
                     <td>Delegate</td>
                     <td><?php if($earlydate == 0) {?>
-                        <input type="radio" name="amount" id="amount" value="<?php echo $result->delegate_early_academic;?>"/><?php }?>  $<?php echo $result->delegate_early_academic;?></td>
+                        <input type="radio" name="eamount" id="eamount" value="<?php echo $result->delegate_early_academic;?>"/><?php }?>  $<?php echo $result->delegate_early_academic;?></td>
                     <td><?php if($earlydate == 0) {?>
-                        <input type="radio" name="amount" id="amount" value="<?php echo $result->delegate_early_business;?>"/><?php }?>  $<?php echo $result->delegate_early_business;?></td>
+                        <input type="radio" name="eamount" id="eamount" value="<?php echo $result->delegate_early_business;?>"/><?php }?>  $<?php echo $result->delegate_early_business;?></td>
                     <td><?php if($regulardate == 0) {?>
-                        <input type="radio" name="amount" id="amount" value="<?php echo $result->delegate_regular_academic;?>"/><?php }?>  $<?php echo $result->delegate_regular_academic;?></td>
+                        <input type="radio" name="eamount" id="eamount" value="<?php echo $result->delegate_regular_academic;?>"/><?php }?>  $<?php echo $result->delegate_regular_academic;?></td>
                     <td><?php if($regulardate == 0) {?>
-                        <input type="radio" name="amount" id="amount" value="<?php echo $result->delegate_regular_business;?>"/><?php }?>  $<?php echo $result->delegate_regular_business;?></td>
+                        <input type="radio" name="eamount" id="eamount" value="<?php echo $result->delegate_regular_business;?>"/><?php }?>  $<?php echo $result->delegate_regular_business;?></td>
                     <td><?php if($onspotdate == 0) {?>
-                        <input type="radio" name="amount" id="amount" value="<?php echo $result->delegate_onspot_academic;?>"/><?php }?>  $<?php echo $result->delegate_onspot_academic;?></td>
+                        <input type="radio" name="eamount" id="eamount" value="<?php echo $result->delegate_onspot_academic;?>"/><?php }?>  $<?php echo $result->delegate_onspot_academic;?></td>
                     <td><?php if($onspotdate == 0) {?>
-                        <input type="radio" name="amount" id="amount" value="<?php echo $result->delegate_onspot_business;?>"/><?php }?>  $<?php echo $result->delegate_onspot_business;?></td>
+                        <input type="radio" name="eamount" id="eamount" value="<?php echo $result->delegate_onspot_business;?>"/><?php }?>  $<?php echo $result->delegate_onspot_business;?></td>
+                    <td>
+                        <input type="radio" name="aamount" id="aamount" value="<?php echo $result->delegate_accommodation;?>"/>$<?php echo $result->delegate_accommodation;?>
+                    </td>
                   </tr>
                 </tbody>
               </table>
+                Total Amount: <input type="text" name="amount" id="amount" value="" readonly=""/>         
                 <input type="image" name="submit" border="0"
         src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" alt="PayPal - The safer, easier way to pay online">
         <img alt="" border="0" width="1" height="1" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
@@ -469,3 +480,27 @@ else
         </div> <!-- /.main-page-wrapper -->
     </body>
 </html>
+<script>
+    $("input[name='eamount']").change(function(){
+        var eamount = $('input[name=eamount]:checked', '#form1').val();
+        var aamount = $('input[name=aamount]:checked', '#form1').val();
+        if(aamount !== '')
+        {
+            var amount = eamount + aamount;
+        }
+        else
+            var amount = eamount;
+        $('#amount').val(amount);
+    });
+    $("input[name='aamount']").change(function(){
+        var eamount = $('input[name=eamount]:checked', '#form1').val();
+        var aamount = $('input[name=aamount]:checked', '#form1').val();
+        if(eamount !== '')
+        {
+            var amount = eamount + aamount;
+        }
+        else
+            var amount = aamount;
+        $('#amount').val(amount);
+    });
+</script>    
