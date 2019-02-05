@@ -1,7 +1,7 @@
 <?php
 require_once('../config.php');
 require_once('head.php');
-$sql = "select * from submit_conferance";
+$sql = "select * from submit_conferance order by id desc";
 $result = mysqli_query($conn, $sql);
 ?>
 <script>
@@ -24,6 +24,7 @@ $result = mysqli_query($conn, $sql);
                             <th>User Email</th>
                             <th>Contact Number</th>
                             <th>User Presentation</th>
+                            <th>Create Date</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -42,6 +43,7 @@ $result = mysqli_query($conn, $sql);
                                 <td><?php echo $rec['user_email']; ?></td>
                                 <td><?php echo $rec['contact_number']; ?></td>
                                 <td><?php echo $rec['user_presentation']; ?></td>
+                                <td><?php echo $rec['created_date']; ?></td>
                                 <td>
                                     <a href="viewconferance.php?id=<?php echo $rec['id']; ?>">
                                         <i class="glyphicon glyphicon-eye-open" id="view_event"></i>
