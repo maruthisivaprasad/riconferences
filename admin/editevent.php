@@ -152,7 +152,7 @@ if (isset($_POST) && !empty($_POST)) {
         foreach ($_FILES["hotel_images"]["name"] as $key => $value) {
             if (!file_exists($path . '/documents/' . $eventid))
                 mkdir($path . '/documents/' . $eventid, 0777, true);
-            if (!file_exists($path . '/documents/' . $eventid . '/slider'))
+            if (!file_exists($path . '/documents/' . $eventid . '/hotel'))
                 mkdir($path . '/documents/' . $eventid . '/hotel', 0777, true);
 
             $extension = pathinfo($_FILES["hotel_images"]["name"][$key], PATHINFO_EXTENSION);
