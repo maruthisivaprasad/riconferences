@@ -52,7 +52,7 @@ if (isset($_POST) && !empty($_POST)) {
         $onspotdate1 = explode("/", $_POST['onspotdate']);
         $onspotdate = $onspotdate1[2] . "-" . $onspotdate1[0] . "-" . $onspotdate1[1];
     }
-    $sliderfile = $brochurefile = $backgroundfile = $thumbfile = $schedulefile = '';
+    $sliderfile = $brochurefile = $backgroundfile = $thumbfile = $schedulefile = $hotelfile = '';
     
     if (isset($_FILES["program_schedule"]["name"]) && !empty($_FILES["program_schedule"]["name"])) {
         unlink($path . '/documents/' . $eventid . '/' . $result->program_schedule);
@@ -144,7 +144,30 @@ if (isset($_POST) && !empty($_POST)) {
         $sql = "update events set slider_images='" . $sliderfile . "' where eventid=" . $eventid;
         mysqli_query($conn, $sql);
     }
+    
+    if (isset($_FILES["hotel_images"]["name"][0]) && !empty($_FILES["hotel_images"]["name"][0])) {
+        $hotelimages = explode(",", $result->hotel_images);
+        foreach ($sliderimages as $key => $value)
+            unlink($path . '/documents/' . $eventid . '/' . $value);
+        foreach ($_FILES["hotel_images"]["name"] as $key => $value) {
+            if (!file_exists($path . '/documents/' . $eventid))
+                mkdir($path . '/documents/' . $eventid, 0777, true);
+            if (!file_exists($path . '/documents/' . $eventid . '/slider'))
+                mkdir($path . '/documents/' . $eventid . '/hotel', 0777, true);
 
+            $extension = pathinfo($_FILES["hotel_images"]["name"][$key], PATHINFO_EXTENSION);
+            $name = substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, '8');
+            $target_file = $path . '/documents/' . $eventid . '/hotel/' . $name . "." . $extension;
+
+            if (move_uploaded_file($_FILES["hotel_images"]["tmp_name"][$key], $target_file))
+                $hotelfile .= 'hotel/' . $name . '.' . $extension . ",";
+        }
+        if (!empty($hotelfile))
+            $hotelfile = rtrim($hotelfile, ",");
+        $sql = "update events set hotel_images='" . $hotelfile . "' where eventid=" . $eventid;
+        mysqli_query($conn, $sql);
+    }
+    
     $sql = "update events set title='" . $_POST['title'] . "', slug='" . slugify($_POST['slug']) . "', "
             . "date='" . $_POST['date'] . "', enddate='" . $enddate . "', location='" . $_POST['location'] . "', "
             . "theme='" . $_POST['theme'] . "', description='" . htmlentities(addslashes($_POST['description'])) . "',"
@@ -161,7 +184,8 @@ if (isset($_POST) && !empty($_POST)) {
             . "early_date='".$earlydate."', regular_date='".$regulardate."', onsport_date='".$onspotdate."', "
             . "organising_committee='".htmlentities(addslashes($_POST['organising_committee']))."', "
             . "speaker_accommodation='".$_POST['speaker_accommodation']."', student_accommodation='".$_POST['student_accommodation']."',"
-            . "delegate_accommodation='".$_POST['delegate_accommodation']."' where eventid=" . $eventid;
+            . "delegate_accommodation='".$_POST['delegate_accommodation']."', hotel_name='".$_POST['hotel_name']."',"
+            . "hotel_address='".$_POST['hotel_address']."', hotel_phone='".$_POST['hotel_phone']."' where eventid=" . $eventid;
     //echo $sql;exit;
     mysqli_query($conn, $sql);
     header("location: events.php");
@@ -543,6 +567,42 @@ require_once('head.php');
                         </div>
                         <div class="col-md-6">
                             <input type="text" class="form-control" name="delegate_accommodation" id="delegate_accommodation" value="<?php echo $result->delegate_accommodation; ?>" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="hotel_name">Hotel Name:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="hotel_name" id="hotel_name" value="<?php echo $result->hotel_name; ?>">
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="hotel_address">Hotel Address:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="hotel_address" id="hotel_address" value="<?php echo $result->hotel_address; ?>">
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="hotel_phone">Hotel Phone:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="hotel_phone" id="hotel_phone" value="<?php echo $result->hotel_phone; ?>">
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-md-3">
+                            <label for="hotel_images">Hotel images: </label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="file" class="form-control" name="hotel_images[]" id="hotel_images" multiple="multiple" value="">
                         </div>
                     </div>
                     
