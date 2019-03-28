@@ -165,7 +165,6 @@ else
             </div>
             <p class="text-center" style="font-weight:bold;"><b>Hotel Name:</b> <?php echo $result->hotel_name;?></p>
             <p class="text-center"><b>Address:</b> <?php echo $result->hotel_address;?></p>
-            <p class="text-center"><b>Phone Number:</b> <?php echo $result->hotel_phone;?></p>
             <div class="container">
                 <?php if(!empty($result->hotel_images)) {
                         $hotelimages = explode(",", $result->hotel_images);?>
@@ -197,7 +196,7 @@ else
      <nav class="floating-menu">
         <ul class="main-menu">
             <li>
-                <p>WhatsApp contact: 1-647-691-8669<p>
+                <p>WhatsApp contact: <?php echo $result->hotel_phone;?><p>
             </li>
         </ul>
         <div class="menu-bg"></div>
