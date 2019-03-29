@@ -11,6 +11,12 @@
     <a href="order.php" <?php if (strpos($_SERVER['REQUEST_URI'], "order.php") > -1) {
     echo "class = 'active'";
     } ?>>Order History</a>
+    <a href="organizing_committe.php" <?php if (strpos($_SERVER['REQUEST_URI'], "organizing_committe.php") > -1) {
+    echo "class = 'active'";
+    } ?>>Organizing Committe</a>
+    <a href="key_committe.php" <?php if (strpos($_SERVER['REQUEST_URI'], "key_committe.php") > -1) {
+    echo "class = 'active'";
+    } ?>>Key Committe</a>
     <a href="logout.php">Logout</a>
 </div>
 
