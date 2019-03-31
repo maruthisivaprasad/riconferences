@@ -192,9 +192,10 @@ else
      </div>
      </div>
      <?php }?> 
-    <?php $sqlc = "select * from organizing_committe where eventid=".$recc['eventid'];
+    <?php $sqlc = "select * from organizing_committe where eventid=".$eventid;
     $resultc = mysqli_query($conn, $sqlc);
-    if(!empty($resultc)) {?>
+    $recc1 = mysqli_fetch_array($resultc);
+    if(!empty($recc1)) {?>
     <div class="container mb-5">
         <div class="mt-2">
             <div class="container">
@@ -218,9 +219,10 @@ else
     </div>
     <?php }?>
     
-    <?php $sqlc = "select * from key_committe where eventid=".$recc['eventid'];
+    <?php $sqlc = "select * from key_committe where eventid=".$eventid;
     $resultc = mysqli_query($conn, $sqlc);
-    if(!empty($resultc)) {?>
+    $recc1 = mysqli_fetch_array($resultc);
+    if(!empty($recc1)) {?>
     <div class="container mb-5">
         <div class="mt-2">
             <div class="container">
