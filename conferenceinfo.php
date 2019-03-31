@@ -187,12 +187,62 @@ else
                     <?php }?>
                 </div> <!-- /.image-gallery -->
                 <?php }?>
-					
             </div>
         </div>
      </div>
      </div>
      <?php }?> 
+    <?php $sqlc = "select * from organizing_committe where eventid=".$recc['eventid'];
+    $resultc = mysqli_query($conn, $sqlc);
+    if(!empty($resultc)) {?>
+    <div class="container mb-5">
+        <div class="mt-2">
+            <div class="container">
+                <div class="theme-title text-center">
+                    <h2 style="font-size:30px;">Organize Committe</h2>
+                </div>
+                <div class="container">
+                    <?php $i = 0; while ($recc = mysqli_fetch_array($resultc)) { ?>
+                    <?php if($i==0) {?><div class="row"><?php }?>
+                    <div class="col-md-3">
+                        <img src="documents/<?php echo $recc['eventid'];?>/organize/<?php echo $recc['image'];?>" class="mb-2">
+                        <p><?php echo $recc['name'];?></br>
+                        <?php echo $recc['profession'];?><?php echo $recc['university'];?></br>
+                        <?php echo $recc['city'];?></p>
+                    </div>
+                    <?php $i++; if($i>3) { $i=0; }?>
+                    <?php if($i==0) {?></div><?php }}?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php }?>
+    
+    <?php $sqlc = "select * from key_committe where eventid=".$recc['eventid'];
+    $resultc = mysqli_query($conn, $sqlc);
+    if(!empty($resultc)) {?>
+    <div class="container mb-5">
+        <div class="mt-2">
+            <div class="container">
+                <div class="theme-title text-center">
+                    <h2 style="font-size:30px;">Key Committe</h2>
+                </div>
+                <div class="container">
+                    <?php $i = 0; while ($recc = mysqli_fetch_array($resultc)) { ?>
+                    <?php if($i==0) {?><div class="row"><?php }?>
+                    <div class="col-md-3">
+                        <img src="documents/<?php echo $recc['eventid'];?>/key/<?php echo $recc['image'];?>" class="mb-2">
+                        <p><?php echo $recc['name'];?></br>
+                        <?php echo $recc['profession'];?><?php echo $recc['university'];?></br>
+                        <?php echo $recc['city'];?></p>
+                    </div>
+                    <?php $i++; if($i>3) { $i=0; }?>
+                    <?php if($i==0) {?></div><?php }}?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php }?>
      <nav class="floating-menu">
         <ul class="main-menu">
             <li>

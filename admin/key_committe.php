@@ -1,19 +1,23 @@
 <?php
 require_once('../config.php');
+$sql = "select eventid, title from events";
+$result = mysqli_query($conn, $sql);
 if (isset($_POST) && !empty($_POST)) {
-    $sql = "insert into key_committe (name, profession, university, city, description) values ('" . $_POST['name'] . "', "
-            . "'" . $_POST['profession'] . "', '" . $_POST['university'] . "', '" . $_POST['city'] . "', '" . $_POST['description'] . "')";
+    $sql = "insert into key_committe (eventid, name, profession, university, city) values ('" . $_POST['eventname'] . "', '" . $_POST['name'] . "', "
+            . "'" . $_POST['profession'] . "', '" . $_POST['university'] . "', '" . $_POST['city'] . "')";
     mysqli_query($conn, $sql);
     $organizeid = $conn->insert_id;
     $organizefile = '';
-    if ($eventid > 0) {
+    if ($organizeid > 0) {
         if (isset($_FILES["key_image"]["name"]) && !empty($_FILES["key_image"]["name"])) {
-            if (!file_exists($path . '/documents/key'))
-                mkdir($path . '/documents/key', 0777, true);
+            if (!file_exists($path . '/documents/' . $_POST['eventname']))
+                mkdir($path . '/documents/' . $_POST['eventname'], 0777, true);
+            if (!file_exists($path . '/documents/' . $_POST['eventname'] . '/key'))
+                mkdir($path . '/documents/' . $_POST['eventname'] . '/key', 0777, true);
 
             $extension = pathinfo($_FILES["key_image"]["name"], PATHINFO_EXTENSION);
             $name = substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, '8');
-            $target_file = $path . '/documents/key/' . $name . "." . $extension;
+            $target_file = $path . '/documents/' . $_POST['eventname'] . '/key/' . $name . "." . $extension;
 
             if (move_uploaded_file($_FILES["key_image"]["tmp_name"], $target_file))
                 $organizefile = $name . '.' . $extension;
@@ -21,7 +25,7 @@ if (isset($_POST) && !empty($_POST)) {
         $sql = "update key_committe set image='" . $organizefile . "' where id=" . $organizeid;
         mysqli_query($conn, $sql);
     }
-    header("location: key_committe.php");
+    header("location: keycommitte.php");
 }
 require_once('head.php');
 ?>
@@ -37,11 +41,25 @@ require_once('head.php');
         </div>
         <div class="col-md-10" style="padding-top: 20px;">   
             <div class="row" style="padding-top: 20px;"> 
-                <h2>Add Event</h2>
+                <h2>Add Key</h2>
             </div>
             <div class="row" style="padding-top: 20px;">   
                 <form class="form add" id="form_company" method="post" enctype="multipart/form-data" action="key_committe.php">
+                    
                     <div class="row">
+                        <div class="col-md-3">
+                            <label for="name">Event: <span class="required">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <select name="eventname" id="eventname" class="form-control">
+                                <?php while ($rec = mysqli_fetch_array($result)) { ?>
+                                <option value="<?php echo $rec['eventid'];?>"><?php echo $rec['title'];?></option>
+                                <?php }?>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="padding-top: 10px;">
                         <div class="col-md-3">
                             <label for="name">Name: <span class="required">*</span></label>
                         </div>
@@ -52,40 +70,28 @@ require_once('head.php');
 
                     <div class="row" style="padding-top: 10px;">
                         <div class="col-md-3">
-                            <label for="profession">Profession: <span class="required">*</span></label>
+                            <label for="profession">Profession:</label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="profession" id="profession" value="" required>
+                            <input type="text" class="form-control" name="profession" id="profession" value="">
                         </div>
                     </div>
 
                     <div class="row" style="padding-top: 10px;">
                         <div class="col-md-3">
-                            <label for="university">University: <span class="required">*</span></label>
+                            <label for="university">University:</label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="university" id="university" value="" required>
+                            <input type="text" class="form-control" name="university" id="university" value="">
                         </div>
                     </div>
 
                     <div class="row" style="padding-top: 10px;">
                         <div class="col-md-3">
-                            <label for="city">City: <span class="required">*</span></label>
+                            <label for="city">City:</label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="city" id="city" value="" required>
-                        </div>
-                    </div>
-
-                    <div class="row" style="padding-top: 10px;">
-                        <div class="col-md-3">
-                            <label for="description">Description:</label>
-                        </div>
-                        <div class="col-md-6">
-                            <textarea name="description" class="form-control" id="description"></textarea>
-                            <script>
-                                CKEDITOR.replace('description');
-                            </script>
+                            <input type="text" class="form-control" name="city" id="city" value="">
                         </div>
                     </div>
 

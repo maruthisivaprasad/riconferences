@@ -22,6 +22,7 @@ $result = mysqli_query($conn, $sql);
                 <table id="example" class="display table" style="width:100%">
                     <thead>
                         <tr>
+                            <th>Event Name</th>
                             <th>Name</th>
                             <th>Profession</th>
                             <th>University</th>
@@ -30,8 +31,13 @@ $result = mysqli_query($conn, $sql);
                         </tr>
                     </thead>
                     <tbody>
-                        <?php while ($rec = mysqli_fetch_array($result)) { ?>
+                        <?php while ($rec = mysqli_fetch_array($result)) {
+                            $sql1 = "select title from events where eventid=" . $rec['eventid'];
+                            $res1 = mysqli_query($conn, $sql1);
+                            $result1 = mysqli_fetch_array($res1);
+                            ?>
                             <tr>
+                                <td><?php echo $result1['title']; ?></td>
                                 <td><?php echo $rec['name']; ?></td>
                                 <td><?php echo $rec['profession']; ?></td>
                                 <td><?php echo $rec['university']; ?></td>
@@ -54,7 +60,7 @@ $result = mysqli_query($conn, $sql);
 </body>
 <script type="text/javascript">
     function getdelete(id) {
-        if (confirm("Are you sure you want to delete this key?")) {
+        if (confirm("Are you sure you want to delete this organize?")) {
             $.ajax({
                 url: 'deleteorganize.php',
                 type: "POST",
